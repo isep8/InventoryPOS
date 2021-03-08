@@ -579,6 +579,7 @@ type
     qry2Cost: TffQuery;
     cboDestinationName: TComboBox;
     lblDestinationName: TLabel;
+    chkPrice: TCheckBox;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCardClick(Sender: TObject);
@@ -2187,9 +2188,17 @@ try
             rpt1.SetParam('DateTo', FormatDateTime('mm/dd/yyyy', dtTo.Date));
             rpt1.SetParam('DestinationName', trim(cboDestinationName.Text));
             rpt1.SetParam('PrintedBy', gsUserID);
-            rpt1.ProjectFile:= LstrReportPath + '\StockOut2.rav';
-            if not chkPDF.Checked then rpt1.Execute;
 
+            if chkPrice.Checked then
+            begin
+                rpt1.ProjectFile:= LstrReportPath + '\StockOut2_with_price.rav';
+                if not chkPDF.Checked then rpt1.Execute;
+            end
+            else
+            begin
+                rpt1.ProjectFile:= LstrReportPath + '\StockOut2.rav';
+                if not chkPDF.Checked then rpt1.Execute;
+            end;
         end;
 
         //if destination name is all
@@ -2216,8 +2225,19 @@ try
             rpt1.SetParam('DateFrom', FormatDateTime('mm/dd/yyyy', dtFrom.Date));
             rpt1.SetParam('DateTo', FormatDateTime('mm/dd/yyyy', dtTo.Date));
             rpt1.SetParam('DestinationName', trim(cboDestinationName.Text));
-            rpt1.ProjectFile:= LstrReportPath + '\StockOut2.rav';
-            if not chkPDF.Checked then rpt1.Execute;
+            //rpt1.ProjectFile:= LstrReportPath + '\StockOut2.rav';
+            //if not chkPDF.Checked then rpt1.Execute;
+
+            if chkPrice.Checked then
+            begin
+                rpt1.ProjectFile:= LstrReportPath + '\StockOut2_with_price.rav';
+                if not chkPDF.Checked then rpt1.Execute;
+            end
+            else
+            begin
+                rpt1.ProjectFile:= LstrReportPath + '\StockOut2.rav';
+                if not chkPDF.Checked then rpt1.Execute;
+            end;
 
         end;
 
@@ -2714,6 +2734,7 @@ begin
     chkPerDate.Enabled:=true;
     lblDestinationName.Visible:= false;
     cboDestinationName.Visible:= false;
+    chkPrice.Visible:= false;
 
 
     strReport:= lstReport.Items.Strings[lstReport.itemIndex];
@@ -2769,11 +2790,13 @@ begin
         strStockCode:= Trim(strStockCode);
         strStockOutDescription:= MidStr(cboDestinationName.Text,11, length(cboDestinationName.text));
 
+
         grpCoveredDate.Visible:= true;
         grpYear.Visible:=false;
         chkPerDate.Visible:=false;
         cboDestinationName.Visible:= true;
         lblDestinationName.Visible:= true;
+        chkPrice.Visible:= true;
 
         with qry2Chk do
         begin
