@@ -177,7 +177,10 @@ uses uSearchItems, uInterface, DateUtils, uSearchSupplier, uMain,
 {$R *.dfm}
 
 Procedure RefreshTotal;
+var intCount: integer;
 Begin
+    intCount:= 0;
+
    //Total
     WITH frmStockIn do
     begin
@@ -208,6 +211,9 @@ Begin
         lblTotal.refresh;
         qry2Chk.Close;
     end;
+
+    intCount:= frmStockIn.tblIN.RecordCount;
+    frmStockIn.lblCount.Caption:= IntToStr(intCount);
 end;
 
 procedure TfrmStockIn.btnAddClick(Sender: TObject);
@@ -269,6 +275,7 @@ begin
     end;
     
     tblIN.Delete;
+    lblCount.Caption:= IntToStr(tblIN.RecordCount);
 end;
 
 procedure TfrmStockIn.FormShow(Sender: TObject);
@@ -680,7 +687,7 @@ procedure TfrmStockIn.tblINAfterPost(DataSet: TDataSet);
 begin
     //cboTransType.Enabled:=false;
     //cboTransType.Color:= clGray;
-    lblCount.Caption:= IntToStr(tblIN.RecordCount);
+    //lblCount.Caption:= IntToStr(tblIN.RecordCount);
     RefreshTotal;
 
 end;
@@ -692,7 +699,8 @@ begin
         //cboTransType.Enabled:=true;
         //cboTransType.Color:= clWhite;
     //end;
-    lblCount.Caption:= IntToStr(tblIN.RecordCount);
+    //lblCount.Caption:= IntToStr(tblIN.RecordCount);
+    RefreshTotal;
 end;
 
 procedure TfrmStockIn.cboTransTypeChange(Sender: TObject);
@@ -714,6 +722,9 @@ begin
         //edtRefNo.text:= '';
         edtRefNo.Enabled:=true;
 
+        if tblIN.Active then
+        if tblIN.RecordCount>0 then
+            lblCount.Visible:=true;
         //reference number is coming from the source invoice, from supplier
     end
     else if (cboTransType.Text = 'RETURN ITEM') then
@@ -732,6 +743,10 @@ begin
         //set stock in to blank
         //edtRefNo.text:= '';
         edtRefNo.Enabled:=true;
+
+        if tblIN.Active then
+        if tblIN.RecordCount>0 then
+            lblCount.Visible:=true;
 
         //reference number is coming from the source invoice, from customer
     end
@@ -771,6 +786,10 @@ begin
         end;
         tblSite.Close;
 
+        if tblIN.Active then
+        if tblIN.RecordCount>0 then
+            lblCount.Visible:=true;
+
         //set transfer no - transfer number is coming from the source branch
         //With frmMain do
         //begin
@@ -801,6 +820,10 @@ begin
             tblRef.Close;
         end;
         edtRefNo.Enabled:=false;
+
+        if tblIN.Active then
+        if tblIN.RecordCount>0 then
+            lblCount.Visible:=true;
     end;
 end;
 

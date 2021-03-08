@@ -40,7 +40,7 @@ object frmMain: TfrmMain
   end
   object Panel2: TPanel
     Left = 0
-    Top = 638
+    Top = 637
     Width = 1260
     Height = 24
     Align = alBottom
@@ -2191,7 +2191,6 @@ object frmMain: TfrmMain
     Top = 23
   end
   object Comms1: TffCommsEngine
-    Active = True
     CommsEngineName = 'RSE1'
     ServerEngine = RSE1
     Protocol = ptTCPIP
@@ -2199,7 +2198,6 @@ object frmMain: TfrmMain
     Top = 23
   end
   object ffSession1: TffSession
-    Active = True
     ClientName = 'RSE1'
     SessionName = 'Sess1'
     Left = 140

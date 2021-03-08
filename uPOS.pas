@@ -20,6 +20,7 @@ ThackDbGrid = Class(TDBGrid);
     tblHdr: TffTable;
     tblDet: TffTable;
     tblMast: TffTable;
+    
     tblMastItemCode: TStringField;
     tblMastBarcode: TStringField;
     tblMastDescription: TStringField;
@@ -815,8 +816,9 @@ begin
 end;
 
 procedure TfrmPOS.btnEndClick(Sender: TObject);
-begin                 
+begin
 
+    //check items if not empty
     if tblWf.Active then
     begin
         if tblWf.RecordCount<= 0 then
@@ -834,7 +836,7 @@ begin
         Exit;
     end;
 
-    //btnCompute.Click;
+    //Format float
     LdblTotalNetAmount:= strtoFloat(formatfloat('#########.00',LdblTotalNetAmount));
     LdblTotalNetOfVat:= strtoFloat(formatfloat('#########.00',LdblTotalNetOfVat));
     LdblTotalVat:= strtoFloat(formatfloat('#########.00',LdblTotalVat));
@@ -856,7 +858,7 @@ begin
         end
         else
         begin
-            //messageDlg('Transaction Successful!',mtInformation,[mbOk],0);
+            //successful, no printout
         end;
 
         //Print PDF
@@ -968,6 +970,7 @@ begin
         while not tblWf.Eof do
         begin
             LdblTotalAmount:= LdblTotalAmount + tblWfTotalAmount.Value;
+            //ShowMessage(FloatToStr(LdblTotalAmount));
             LdblTotalNetAmount:= LdblTotalNetAmount + (tblWfTotalAmount.Value-tblWfDiscountAmt.Value);
             LdblTotalDiscAmount:= LdblTotalDiscAmount + tblWfDiscountAmt.Value;
 
@@ -1579,7 +1582,7 @@ begin
 end;
 
 procedure TfrmPOS.btnChangeQtyClick(Sender: TObject);
-var dblQty: Double;
+var dblQty1: Double;
     dblVatAmount, dblNetAmount: double;
     dblQtyOrig, dblVatAmountOrig, dblNetAmountOrig: double;
     dblDiscAmount: Double;
@@ -1607,7 +1610,7 @@ begin
     {recompute}
     if frmInputNewQty.blnOK then
     begin
-        dblQty:=frmInputNewQty.dblQty;
+        dblQty1:=frmInputNewQty.dblQty;
 
         LdblEvat1:= tblWfAppliedVat.Value + 1; //.12 + 1
         LdblEvat2:= tblWfAppliedVat.Value;       //.12
@@ -1618,7 +1621,7 @@ begin
         dblDiscPercent:= StrToFloat(strAppliedDisc);
         if dblDiscPercent>0 then
         begin
-            dblDiscAmount:= (dblQty * tblWfSellingPrice.Value) * (dblDiscPercent/100)
+            dblDiscAmount:= (dblQty1 * tblWfSellingPrice.Value) * (dblDiscPercent/100)
         end
         else
         begin
@@ -1626,19 +1629,19 @@ begin
         end;
 
         //dblQty
-        dblNetAmount:= (dblQty * tblWfSellingPrice.Value)-dblDiscAmount;
+        dblNetAmount:= (dblQty1 * tblWfSellingPrice.Value)-dblDiscAmount;
         dblVatAmount:= StrToFloat(FormatFloat('#########.00', (dblNetAmount/LdblEvat1) * (LdblEvat2)));
         dblNetAmountOrig:= tblWfNetAmount.Value;
         dblVatAmountOrig:= tblWfVatAmt.Value;
 
         if chkReturn.Checked then
         begin
-            dblQty:= dblQty*-1;
+            dblQty1:= dblQty1*-1;
             dblNetAmount:= dblNetAmount*-1;
             
             tblWf.Edit;
-            tblWfQty.Value:= dblQty;
-            tblWfTotalAmount.Value:= dblQty * tblWfSellingPrice.Value;
+            tblWfQty.Value:= dblQty1;
+            tblWfTotalAmount.Value:= dblQty1 * tblWfSellingPrice.Value;
             tblWfDiscountAmt.Value:= dblDiscAmount*-1;
             tblWfVatAmt.Value:= dblVatAmount *-1; //compute vat
             tblWfNetAmount.Value:= dblNetAmount;
@@ -1648,8 +1651,8 @@ begin
         else
         begin
             tblWf.Edit;
-            tblWfQty.Value:= dblQty;
-            tblWfTotalAmount.Value:= dblQty * tblWfSellingPrice.Value;
+            tblWfQty.Value:= dblQty1;
+            tblWfTotalAmount.Value:= dblQty1 * tblWfSellingPrice.Value;
             tblWfDiscountAmt.Value:= dblDiscAmount;
             tblWfVatAmt.Value:= dblVatAmount; //compute vat
             tblWfNetAmount.Value:= dblNetAmount;
@@ -1863,7 +1866,7 @@ begin
 
     //generate new reference no
     if not tblRef.Active then tblRef.Open;
-    edtRefNo.Text:= FormatDateTime('yy', now)+ Format('%.*d',[6, tblRefLastInvoiceNo.Value + 1]);
+    edtRefNo.Text:= FormatDateTime('yymm', now)+ Format('%.*d',[6, tblRefLastInvoiceNo.Value + 1]);
     tblRef.Close;
 
     //proceed to scanning

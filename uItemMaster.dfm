@@ -1,6 +1,6 @@
 object frmItemMaster: TfrmItemMaster
-  Left = 7
-  Top = 32
+  Left = 68
+  Top = 64
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Item Master'
@@ -2107,7 +2107,7 @@ object frmItemMaster: TfrmItemMaster
       item
         Name = 'StandardLocation'
         DataType = ftString
-        Size = 10
+        Size = 20
       end
       item
         Name = 'LastTransDate'
@@ -2121,6 +2121,170 @@ object frmItemMaster: TfrmItemMaster
         Name = 'ProdCategory'
         DataType = ftString
         Size = 20
+      end
+      item
+        Name = 'ProdSize'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ProdUM'
+        DataType = ftString
+        Size = 3
+      end
+      item
+        Name = 'ProdColor'
+        DataType = ftString
+        Size = 10
+      end
+      item
+        Name = 'ProdHeight'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ProdHeightUM'
+        DataType = ftString
+        Size = 3
+      end
+      item
+        Name = 'ProdWeight'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ProdWeightUM'
+        DataType = ftString
+        Size = 3
+      end
+      item
+        Name = 'WSQty1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty2'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty3'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty4'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty5'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty6'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSUM1'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM2'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM3'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM4'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM5'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM6'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSDesc1'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc2'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc3'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc4'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc5'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc6'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSEQPcs1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs2'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs3'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs4'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs5'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs6'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost2'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost3'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost4'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost5'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost6'
+        DataType = ftFloat
       end
       item
         Name = 'EnteredDT'
@@ -2207,7 +2371,6 @@ object frmItemMaster: TfrmItemMaster
     end
     object tblMastStandardLocation: TStringField
       FieldName = 'StandardLocation'
-      Size = 10
     end
     object tblMastVat: TFloatField
       FieldName = 'Vat'

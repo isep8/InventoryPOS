@@ -101,6 +101,7 @@ uses uItemMaster, DateUtils, uSearchItems, uInterface, uMain;
 {$R *.dfm}
 
 procedure TfrmItemMasterAdd.btnSaveClick(Sender: TObject);
+var intQuestion: integer;
 begin
     //Validate blanks
     if trim(edtItemCode.Text) = '' then
@@ -158,7 +159,12 @@ begin
         messageDlg('Failed! Selling price is required.',mtError, [mbOk],0);
         edtSellingPrice.SetFocus;
         edtSellingPrice.SelectAll;
-        exit;
+
+        intQuestion:= messageDlg('Do you want to continue without the selling price?',mtConfirmation,[mbYes,mbNo],0);
+        if intQuestion <> 6 then //<>mrYes
+        begin
+            exit;
+        end;
     end;
 
     //validate reorder qty, um,
@@ -455,13 +461,13 @@ begin
         edtStockBalance.Text:= '0.0';
         edtReorderPointQty.Text:= '10';
         edtStockBalance.Enabled:= true;
-        lblNote1.Visible:=false;
+        //lblNote1.Visible:=false;
         lblNote2.Visible:=false;
     end;
     if edtMode.Text='EDIT' then
     begin
         //edtStockBalance.Enabled:= false;
-        lblNote1.Visible:=true;
+        //lblNote1.Visible:=true;
         lblNote2.Visible:=true;
     end;
 

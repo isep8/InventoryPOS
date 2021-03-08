@@ -7,21 +7,54 @@ File_4=SourceModule,'C:\Delphi Programs\AcctMtce\uMain.pas',0,1,286,130,292,1,0
 File_5=SourceModule,'C:\Delphi Programs\AcctMtce\uInactive.pas',0,1,132,74,134,1,0
 File_6=SourceModule,'D:\ff2\source\ffdb.pas',0,1,9770,39,9781,0,0
 File_7=SourceModule,'D:\ff2\source\ffllbase.pas',0,1,6365,1,6381,0,0
-File_8=SourceModule,'D:\ff2\source\ffdbbase.pas',0,1,331,1,344,0,0
-File_9=SourceModule,'D:\Delphi Programs\Lending\uReports.pas',0,1,440,9,448,1,0
+File_8=SourceModule,'D:\Delphi Programs\Lending\uReports.pas',0,1,440,9,448,1,0
 
 [Modules]
-Module0=D:\Delphi Programs\AndroidPOS\uClientsMaster.pas
-Module1=D:\Delphi Programs\AndroidPOS\uItemMaster.pas
-Module2=D:\Delphi Programs\AndroidPOS\uSystemMaintenance.pas
-Module3=D:\Delphi Programs\AndroidPOS\uSiteMaster.pas
+Module0=D:\Delphi Programs\AndroidPOS\uSplash.pas
+Module1=D:\Delphi Programs\AndroidPOS\uInitialSetup.pas
+Module2=D:\Delphi Programs\AndroidPOS\uMain.pas
+Module3=D:\Delphi Programs\AndroidPOS\uMainModuleMenu.pas
 Module4=D:\Delphi Programs\AndroidPOS\uSiteMasterAdd.pas
 Module5=D:\Delphi Programs\AndroidPOS\uSetStandardLocation.pas
-Module6=D:\Delphi Programs\AndroidPOS\uPOS.pas
-Module7=D:\Delphi Programs\AndroidPOS\uMain.pas
-Module8=D:\Delphi Programs\AndroidPOS\uSupplierMaintenance.pas
-Count=9
+Module6=D:\Delphi Programs\AndroidPOS\uClientsMaster.pas
+Module7=D:\Delphi Programs\AndroidPOS\uItemMaster.pas
+Module8=D:\Delphi Programs\AndroidPOS\uSystemMaintenance.pas
+Module9=D:\Delphi Programs\AndroidPOS\uSiteMaster.pas
+Module10=D:\Delphi Programs\AndroidPOS\uPOS.pas
+Module11=D:\ff2\source\ffdbbase.pas
+Module12=D:\Delphi Programs\AndroidPOS\uSupplierMaintenance.pas
+Count=13
 EditWindowCount=1
+
+[D:\Delphi Programs\AndroidPOS\uSplash.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[D:\Delphi Programs\AndroidPOS\uInitialSetup.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[D:\Delphi Programs\AndroidPOS\uMain.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[D:\Delphi Programs\AndroidPOS\uMainModuleMenu.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
+
+[D:\Delphi Programs\AndroidPOS\uSiteMasterAdd.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=1
+
+[D:\Delphi Programs\AndroidPOS\uSetStandardLocation.pas]
+ModuleType=SourceModule
+FormState=1
+FormOnTop=0
 
 [D:\Delphi Programs\AndroidPOS\uClientsMaster.pas]
 ModuleType=SourceModule
@@ -43,25 +76,15 @@ ModuleType=SourceModule
 FormState=1
 FormOnTop=1
 
-[D:\Delphi Programs\AndroidPOS\uSiteMasterAdd.pas]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=1
-
-[D:\Delphi Programs\AndroidPOS\uSetStandardLocation.pas]
-ModuleType=SourceModule
-FormState=1
-FormOnTop=0
-
 [D:\Delphi Programs\AndroidPOS\uPOS.pas]
 ModuleType=SourceModule
 FormState=1
 FormOnTop=0
 
-[D:\Delphi Programs\AndroidPOS\uMain.pas]
+[D:\ff2\source\ffdbbase.pas]
 ModuleType=SourceModule
-FormState=1
-FormOnTop=1
+FormState=0
+FormOnTop=0
 
 [D:\Delphi Programs\AndroidPOS\uSupplierMaintenance.pas]
 ModuleType=SourceModule
@@ -77,8 +100,8 @@ FormState=0
 FormOnTop=0
 
 [EditWindow0]
-ViewCount=9
-CurrentView=7
+ViewCount=13
+CurrentView=3
 View0=0
 View1=1
 View2=2
@@ -88,84 +111,118 @@ View5=5
 View6=6
 View7=7
 View8=8
+View9=9
+View10=10
+View11=11
+View12=12
 CodeExplorer=CodeExplorer@EditWindow0
 MessageView=MessageView@EditWindow0
 Create=1
 Visible=1
-State=0
+State=2
 Left=262
 Top=140
-Width=926
+Width=1104
 Height=485
-MaxLeft=-1
-MaxTop=-1
-ClientWidth=910
-ClientHeight=446
+MaxLeft=-8
+MaxTop=114
+MaxWidth=1382
+MaxHeight=622
+ClientWidth=1366
+ClientHeight=583
 LeftPanelSize=140
 LeftPanelClients=CodeExplorer@EditWindow0
 LeftPanelData=000004000000000000000000000000000000000000000000000100000000000000000C000000436F64654578706C6F726572FFFFFFFF
 RightPanelSize=0
-BottomPanelSize=0
+BottomPanelSize=85
 BottomPanelClients=MessageView@EditWindow0
-BottomPanelData=00000400010000000B0000004D65737361676556696577000000000000000000000000000000000001000000000000000000000000FFFFFFFF
+BottomPanelData=00000400000000005605000000000000025500000000000000010000000000000000000000000100000000560500000B0000004D65737361676556696577FFFFFFFF
 
 [View0]
 Module=D:\Delphi Programs\AndroidPOS\uMain.pas
-CursorX=1
-CursorY=1
-TopLine=1
+CursorX=61
+CursorY=562
+TopLine=538
 LeftCol=1
 
 [View1]
+Module=D:\Delphi Programs\AndroidPOS\uMainModuleMenu.pas
+CursorX=44
+CursorY=122
+TopLine=119
+LeftCol=1
+
+[View2]
 Module=D:\Delphi Programs\AndroidPOS\uPOS.pas
 CursorX=35
 CursorY=12
 TopLine=1
 LeftCol=1
 
-[View2]
+[View3]
+Module=D:\Delphi Programs\AndroidPOS\uSplash.pas
+CursorX=33
+CursorY=88
+TopLine=76
+LeftCol=1
+
+[View4]
 Module=D:\Delphi Programs\AndroidPOS\uSupplierMaintenance.pas
 CursorX=41
 CursorY=166
 TopLine=158
 LeftCol=1
 
-[View3]
+[View5]
 Module=D:\Delphi Programs\AndroidPOS\uSetStandardLocation.pas
 CursorX=82
 CursorY=122
 TopLine=114
 LeftCol=1
 
-[View4]
+[View6]
+Module=D:\ff2\source\ffdbbase.pas
+CursorX=1
+CursorY=325
+TopLine=314
+LeftCol=1
+
+[View7]
+Module=D:\Delphi Programs\AndroidPOS\uInitialSetup.pas
+CursorX=70
+CursorY=19
+TopLine=1
+LeftCol=1
+
+[View8]
 Module=D:\Delphi Programs\AndroidPOS\uSiteMasterAdd.pas
 CursorX=1
 CursorY=1
 TopLine=1
 LeftCol=1
 
-[View5]
+[View9]
 Module=D:\Delphi Programs\AndroidPOS\uSiteMaster.pas
 CursorX=1
 CursorY=1
 TopLine=1
 LeftCol=1
 
-[View6]
+[View10]
 Module=D:\Delphi Programs\AndroidPOS\uItemMaster.pas
 CursorX=1
 CursorY=1
 TopLine=1
 LeftCol=1
 
-[View7]
+[View11]
 Module=D:\Delphi Programs\AndroidPOS\uClientsMaster.pas
 CursorX=1
 CursorY=1
 TopLine=1
 LeftCol=1
 
-[View8]
+[View12]
 Module=D:\Delphi Programs\AndroidPOS\uSystemMaintenance.pas
 CursorX=1
 CursorY=1
@@ -320,26 +377,26 @@ State=0
 Left=0
 Top=12
 Width=140
-Height=434
+Height=483
 MaxLeft=-1
 MaxTop=-1
 ClientWidth=140
-ClientHeight=434
+ClientHeight=483
 TBDockHeight=305
 LRDockWidth=140
 Dockable=1
 
 [MessageView@EditWindow0]
 Create=1
-Visible=0
+Visible=1
 State=0
 Left=12
 Top=0
-Width=898
+Width=1354
 Height=85
 MaxLeft=-1
 MaxTop=-1
-ClientWidth=898
+ClientWidth=1354
 ClientHeight=85
 TBDockHeight=85
 LRDockWidth=443

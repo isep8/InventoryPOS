@@ -1,6 +1,6 @@
 object frmStockOut: TfrmStockOut
-  Left = 352
-  Top = 85
+  Left = 349
+  Top = 114
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Stock Out Window'

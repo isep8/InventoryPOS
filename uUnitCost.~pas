@@ -17,6 +17,7 @@ type
     procedure btnOkClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,11 +40,15 @@ end;
 
 procedure TfrmUnitCost.btnOkClick(Sender: TObject);
 var dblUnitCost: Double;
+    dblQty: double;
 begin
     dblUnitCost:= strToFloat(edtUnitCost.Text);
+    dblQty:= frmStockIn.tblINQty.Value;
+
+    //ShowMessage(FloatToStr(dblQty));
     frmStockIn.tblIN.Edit;
     frmStockIn.tblINUnitPrice.Value:= dblUnitCost;
-    frmStockIn.tblINTotalPrice.Value:= dblUnitCost * frmStockIn.tblINUnitPrice.Value;
+    frmStockIn.tblINTotalPrice.Value:= dblUnitCost * dblQty;
     frmStockIn.tblIN.Post;
 
     frmUnitCost.Text:= '0.00';
@@ -63,6 +68,11 @@ begin
     begin
         btnCancel.Click;
     end;
+end;
+
+procedure TfrmUnitCost.FormShow(Sender: TObject);
+begin
+    edtUnitCost.SelectAll;
 end;
 
 end.

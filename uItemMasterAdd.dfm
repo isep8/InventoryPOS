@@ -591,6 +591,7 @@ object frmItemMasterAdd: TfrmItemMasterAdd
     ParentFont = False
     TabOrder = 16
     Text = '0.0'
+    Visible = False
     Precision = 1
   end
   object tblRef: TffTable

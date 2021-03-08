@@ -3735,19 +3735,19 @@ object frmPOS: TfrmPOS
       Visible = False
     end
     object edtDisplayWS: TEdit
-      Left = 147
+      Left = 144
       Top = 2
-      Width = 155
+      Width = 169
       Height = 25
       BevelKind = bkFlat
       BevelOuter = bvNone
       BorderStyle = bsNone
       Color = clTeal
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clLime
+      Font.Color = clWhite
       Font.Height = -16
       Font.Name = 'MS Sans Serif'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
       ReadOnly = True
       TabOrder = 4
@@ -3755,19 +3755,19 @@ object frmPOS: TfrmPOS
       Visible = False
     end
     object edtDisplayDisc: TEdit
-      Left = 311
+      Left = 319
       Top = 2
-      Width = 180
+      Width = 194
       Height = 25
       BevelKind = bkFlat
       BevelOuter = bvNone
       BorderStyle = bsNone
       Color = clTeal
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clLime
+      Font.Color = clWhite
       Font.Height = -16
       Font.Name = 'MS Sans Serif'
-      Font.Style = []
+      Font.Style = [fsBold]
       ParentFont = False
       ReadOnly = True
       TabOrder = 5
@@ -4217,7 +4217,7 @@ object frmPOS: TfrmPOS
       end
       item
         Name = 'InvoiceNumber'
-        DataType = ftInteger
+        DataType = ftFloat
       end
       item
         Name = 'ItemCode'
@@ -4273,7 +4273,7 @@ object frmPOS: TfrmPOS
       item
         Name = 'AppliedDisc'
         DataType = ftString
-        Size = 5
+        Size = 8
       end
       item
         Name = 'AppliedDiscValue'
@@ -4352,6 +4352,7 @@ object frmPOS: TfrmPOS
       Size = 15
     end
     object tblDetInvoiceNumber: TIntegerField
+      DisplayWidth = 12
       FieldName = 'InvoiceNumber'
     end
     object tblDetItemCode: TStringField
@@ -4419,7 +4420,7 @@ object frmPOS: TfrmPOS
     end
     object tblDetAppliedDisc: TStringField
       FieldName = 'AppliedDisc'
-      Size = 5
+      Size = 8
     end
     object tblDetQty: TFloatField
       FieldName = 'Qty'

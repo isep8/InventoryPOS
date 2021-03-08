@@ -11,8 +11,10 @@ object frmUnitCost: TfrmUnitCost
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
+  KeyPreview = True
   OldCreateOrder = False
   OnKeyDown = FormKeyDown
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -30,6 +32,7 @@ object frmUnitCost: TfrmUnitCost
     Alignment = taCenter
     TabOrder = 0
     Text = '0.00'
+    Max = 999999.000000000000000000
   end
   object Panel3: TPanel
     Left = 0

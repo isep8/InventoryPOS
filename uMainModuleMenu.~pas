@@ -46,6 +46,7 @@ type
     btnReprint: TBitBtn;
     btnCashierPrint: TBitBtn;
     btnUnpaidInvoices: TBitBtn;
+    btnSendReport: TBitBtn;
     procedure btnPOSClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);

@@ -226,7 +226,7 @@ begin
     end;
 
     //validate
-    qry2Mast.Delete;
+
     tblBal.Open;
     tblBal.IndexFieldNames:= 'ItemCode';
     if tblBal.FindKey([qry2MastItemCode.AsString]) then
@@ -234,7 +234,20 @@ begin
         tblBal.Delete;
     end;
     tblBal.Close;
-    //tblMast.Delete;
+
+    //delete item in itemmaster
+    with qry2Chk do
+    begin
+        Close;
+        SQL.clear;
+        SQL.Add('Delete From ItemMaster');
+        SQL.Add('Where ItemCode=:asItemCode');
+        ParamByName('asItemCode').Value:= qry2MastItemCode.AsString; 
+        ExecSql;
+        Close;
+    end;
+    qry2Mast.Delete;
+
 end;
 
 procedure TfrmItemMaster.btnEditClick(Sender: TObject);

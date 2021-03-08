@@ -140,7 +140,8 @@ object frmSearchItems: TfrmSearchItems
       end
       item
         Expanded = False
-        FieldName = 'Vat Flag'
+        FieldName = 'AppliedVatFlag'
+        Title.Caption = 'Vat Flag'
         Width = 46
         Visible = True
       end>

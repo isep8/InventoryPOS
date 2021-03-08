@@ -577,6 +577,8 @@ type
     qryInsert: TffQuery;
     dsINOUT: TRvDataSetConnection;
     qry2Cost: TffQuery;
+    cboDestinationName: TComboBox;
+    lblDestinationName: TLabel;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCardClick(Sender: TObject);
@@ -1651,7 +1653,7 @@ try
             SQL.Add('SELECT a.Barcode, a.Description, b.BegQty, b.StockIn, b.StockOut, b.StockEnd, a.OrigPrice,(b.StockEnd* a.OrigPrice) as TotalCost');
             SQL.Add('FROM ItemMaster a,');
             SQL.Add(rptBalTBL +' b');
-            SQL.Add('Where (a.Barcode = b.Barcode) and (b.StockEnd>=0)');
+            SQL.Add('Where (a.Barcode = b.Barcode)'); // and (b.StockEnd>=0)');
             SQL.Add('Order By a.Description asc');
             Open;
         end;
@@ -1682,7 +1684,7 @@ try
             SQL.Add('SELECT a.Barcode, a.Description, b.BegQty, b.StockIn, b.StockOut, b.StockEnd, a.OrigPrice,(b.StockEnd * a.OrigPrice) as TotalCost');
             SQL.Add('FROM ItemMaster a,');
             SQL.Add(rptBalTBL +' b');
-            SQL.Add('Where (a.Barcode = b.Barcode) and (b.StockEnd>=0)');
+            SQL.Add('Where (a.Barcode = b.Barcode)'); // and (b.StockEnd>=0)');
             SQL.Add('Order By a.Description asc');
             Open;
         end;
@@ -1712,7 +1714,7 @@ try
             SQL.Add('SELECT a.StandardLocation, a.Barcode, a.Description, b.BegQty, b.StockIn, b.StockOut, b.StockEnd, a.OrigPrice,(b.StockEnd * a.OrigPrice) as TotalCost');
             SQL.Add('FROM ItemMaster a,');
             SQL.Add(rptBalTBL +' b');
-            SQL.Add('Where (a.Barcode = b.Barcode) and (b.StockEnd>=0)');
+            SQL.Add('Where (a.Barcode = b.Barcode)'); // and (b.StockEnd>=0)');
             SQL.Add('GROUP BY a.StandardLocation, a.Barcode, a.Description, b.BegQty, b.StockIn, b.StockOut, b.StockEnd, a.OrigPrice, TotalCost');
             SQL.Add('Order By a.StandardLocation, a.Description asc');
             Open;
@@ -2093,6 +2095,14 @@ try
         strStockOutTBL:= Format('%.*d',[2, yearof(dtFrom.Date)]) + Format('%.*d',[2, monthof(dtFrom.Date)]);
 
         //validate
+        if trim(cboDestinationName.Text)='' then
+        begin
+            messageDlg('Please select destination name.',mtInformation,[mbOk],0);
+            cboDestinationName.Text;
+            cboDestinationName.SetFocus;
+        end;
+
+        //validate
         if not FileExists(frmMain.edtSystemDrive.Text + '\ff2\AndroidPOS\StockOutDetail'+  Format('%.*d',[2, yearof(dtFrom.Date)]) + Format('%.*d',[2, monthof(dtFrom.Date)])+'.ff2') then
         begin
             messageDlg('No transaction on selected date.',mtError, [mbOk],0);
@@ -2143,7 +2153,7 @@ try
                 SQL.Add('Set UnitPrice=:asOrigPrice, TotalPrice=:asTotalPrice');
                 SQL.Add('Where Barcode=:asBarcode');
                 ParamByName('asOrigPrice').Value:= dblOrigPrice;
-                ParamByName('asTotalPrice').Value:= StrToFloat(FormatFloat('###,###,##0.00', dblQty * dblOrigPrice)) ;
+                ParamByName('asTotalPrice').Value:= StrToFloat(FormatFloat('########0.00', dblQty * dblOrigPrice)) ;
                 ParamByName('asBarcode').Value:= strBarcode;
                 ExecSQL;
                 Close;
@@ -2152,27 +2162,63 @@ try
         qry2Rpt.Next;
         end;
 
-
-        //dsRpt.DataSet:= qry2Rpt;
-        dsBalance.DataSet:= qry2Rpt;
-        With qry2Rpt do
+        //if destination name is all
+        if cboDestinationName.Text='ALL' then
         begin
-            close;
-            SQL.Clear;
-            SQL.Add('Select * From StockOutDetail' +  strStockOutTBL );
-            SQL.Add('Where (EnteredDate>=:asEnteredDate1 and EnteredDate<=:asEnteredDate2)');
-            SQL.Add('Order by TransType, EnteredDate, EnteredTime, Description');
-            ParamByName('asEnteredDate1').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtFrom.Date));
-            ParamByName('asEnteredDate2').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtTo.Date));
-            open;
+
+            //dsRpt.DataSet:= qry2Rpt;
+            dsBalance.DataSet:= qry2Rpt;
+            With qry2Rpt do
+            begin
+                close;
+                SQL.Clear;
+                SQL.Add('Select * From StockOutDetail' +  strStockOutTBL );
+                SQL.Add('Where (EnteredDate>=:asEnteredDate1 and EnteredDate<=:asEnteredDate2)');
+                SQL.Add('Order by TransType, EnteredDate, EnteredTime, Description');
+                ParamByName('asEnteredDate1').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtFrom.Date));
+               ParamByName('asEnteredDate2').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtTo.Date));
+                open;
+            end;
+            rpt1.SetParam('Header1', frmMain.edtHeader1.Text);
+            rpt1.SetParam('Header2', frmMain.edtHeader2.Text);
+            rpt1.SetParam('Header3', frmMain.edtHeader3.Text);
+            rpt1.SetParam('DateFrom', FormatDateTime('mm/dd/yyyy', dtFrom.Date));
+            rpt1.SetParam('DateTo', FormatDateTime('mm/dd/yyyy', dtTo.Date));
+            rpt1.SetParam('DestinationName', trim(cboDestinationName.Text));
+            rpt1.SetParam('PrintedBy', gsUserID);
+            rpt1.ProjectFile:= LstrReportPath + '\StockOut2.rav';
+            if not chkPDF.Checked then rpt1.Execute;
+
         end;
-        rpt1.SetParam('Header1', frmMain.edtHeader1.Text);
-        rpt1.SetParam('Header2', frmMain.edtHeader2.Text);
-        rpt1.SetParam('Header3', frmMain.edtHeader3.Text);
-        rpt1.SetParam('DateFrom', FormatDateTime('mm/dd/yyyy', dtFrom.Date));
-        rpt1.SetParam('DateTo', FormatDateTime('mm/dd/yyyy', dtTo.Date));
-        rpt1.ProjectFile:= LstrReportPath + '\StockOut2.rav';
-        if not chkPDF.Checked then rpt1.Execute;
+
+        //if destination name is all
+        if cboDestinationName.Text <>'ALL' then
+        begin
+
+            //dsRpt.DataSet:= qry2Rpt;
+            dsBalance.DataSet:= qry2Rpt;
+            With qry2Rpt do
+            begin
+                close;
+                SQL.Clear;
+                SQL.Add('Select * From StockOutDetail' +  strStockOutTBL );
+                SQL.Add('Where (EnteredDate>=:asEnteredDate1 and EnteredDate<=:asEnteredDate2) and Upper(DestinationName)=:asDestinationName');
+                SQL.Add('Order by TransType, EnteredDate, EnteredTime, Description');
+                ParamByName('asEnteredDate1').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtFrom.Date));
+                ParamByName('asEnteredDate2').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtTo.Date));
+                ParamByName('asDestinationName').Value:= trim(cboDestinationName.Text);
+                open;
+            end;
+            rpt1.SetParam('Header1', frmMain.edtHeader1.Text);
+            rpt1.SetParam('Header2', frmMain.edtHeader2.Text);
+            rpt1.SetParam('Header3', frmMain.edtHeader3.Text);
+            rpt1.SetParam('DateFrom', FormatDateTime('mm/dd/yyyy', dtFrom.Date));
+            rpt1.SetParam('DateTo', FormatDateTime('mm/dd/yyyy', dtTo.Date));
+            rpt1.SetParam('DestinationName', trim(cboDestinationName.Text));
+            rpt1.ProjectFile:= LstrReportPath + '\StockOut2.rav';
+            if not chkPDF.Checked then rpt1.Execute;
+
+        end;
 
         qry2Chk.close;
         qry2Rpt.Close;
@@ -2656,12 +2702,18 @@ end;
 
 procedure TfrmGeneralInquiry.btnGroupClick(Sender: TObject);
 var strReport: string;
+    strStockCode:string;
+    strStockOutDescription:string;
+    strStockOutTBL: String;
 begin
     grpLocation.Visible:= false;
     grpBalYearMonth.Visible:= false;
     grpYear.Visible:=false;
     chkPerDate.Visible:= false;
     chkPerDate.Enabled:=true;
+    lblDestinationName.Visible:= false;
+    cboDestinationName.Visible:= false;
+
 
     strReport:= lstReport.Items.Strings[lstReport.itemIndex];
     if (strReport = 'STOCK BALANCE') or (strReport = 'STOCK BALANCE WITH COST') then
@@ -2710,9 +2762,46 @@ begin
     end
     else if strReport = 'STOCK OUT' then
     begin
+        strStockOutTBL:= Format('%.*d',[2, yearof(dtFrom.Date)]) + Format('%.*d',[2, monthof(dtFrom.Date)]);
+        strStockOutTBL:= 'StockOutDetail' + strStockOutTBL;
+        strStockCode:= LeftStr(cboDestinationName.Text,10);
+        strStockCode:= Trim(strStockCode);
+        strStockOutDescription:= MidStr(cboDestinationName.Text,11, length(cboDestinationName.text));
+
         grpCoveredDate.Visible:= true;
         grpYear.Visible:=false;
         chkPerDate.Visible:=false;
+        cboDestinationName.Visible:= true;
+        lblDestinationName.Visible:= true;
+
+        with qry2Chk do
+        begin
+            Close;
+            SQL.clear;
+            SQL.Add('Select DestinationName From ' + strStockOutTBL );
+            SQL.Add('Group by DestinationName');
+            SQL.Add('Order by DestinationName');
+            Open;
+        end;
+
+        If (not qry2Chk.Active) or (qry2Chk.RecordCount = 0) then
+        begin
+            //message
+            cboDestinationName.Text:= 'NO RECORD';
+            exit;
+        end;
+
+        cboDestinationName.Items.Clear;
+        cboDestinationName.Items.Add('ALL');
+        qry2Chk.First;
+        while not qry2Chk.Eof do
+        begin
+            cboDestinationName.Items.Add(qry2Chk.fieldByName('DestinationName').Value);
+        qry2Chk.Next;
+        end;
+        qry2Chk.Close;
+
+
     end
     else if strReport = 'STOCKIN/STOCKOUT' then
     begin

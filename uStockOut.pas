@@ -173,7 +173,10 @@ uses uSearchSupplier, uSearchItems, uMain, uInterface, uSearchClient;
 {$R *.dfm}
 
 Procedure RefreshTotal;
+var intCount: integer;
 Begin
+    intCount:= 0;
+
    //Total
     WITH frmStockOut do
     begin
@@ -206,6 +209,9 @@ Begin
         lblTotal.refresh;
         qry2Chk.Close;
     end;
+
+    intCount:= frmStockOut.tblOut.RecordCount;
+    frmStockOut.lblCount.Caption:= IntToStr(intCount);
 end;
 
 procedure TfrmStockOut.btnSupClick(Sender: TObject);
@@ -291,6 +297,10 @@ begin
             edtRefNo.Text:= Format('%.*d',[5, (tblRefLastTransferNo.value + 1)]);
             tblRef.Close;
         end;
+
+        if tblOut.Active then
+        if tblOut.RecordCount>0 then
+            lblCount.Visible:=true;
     end
     else if (cboTransType.Text='RETURN TO SUPPLIER') then
     begin
@@ -311,6 +321,10 @@ begin
             edtRefNo.Text:= Format('%.*d',[5, (tblRefLastStockOutNo.value + 1)]);
             tblRef.Close;
         end;
+
+        if tblOut.Active then
+        if tblOut.RecordCount>0 then
+            lblCount.Visible:=true;
     end
     else if (cboTransType.Text = 'REPLACE RETURN ITEM') then
     begin
@@ -331,6 +345,10 @@ begin
             edtRefNo.Text:= Format('%.*d',[5, (tblRefLastStockOutNo.value + 1)]);
             tblRef.Close;
         end;
+
+        if tblOut.Active then
+        if tblOut.RecordCount>0 then
+            lblCount.Visible:=true;
     end
     ELSE if cboTransType.Text ='ADJUSTMENT' then
     begin
@@ -352,6 +370,10 @@ begin
             edtRefNo.Text:= Format('%.*d',[5, (tblRefLastAdjNo.value + 1)]);
             tblRef.Close;
         end;
+
+        if tblOut.Active then
+        if tblOut.RecordCount>0 then
+            lblCount.Visible:=true;
     end
 end;
 
@@ -414,6 +436,7 @@ begin
     end;
 
     tblOut.Delete;
+    RefreshTotal;
 end;
 
 procedure TfrmStockOut.btnClearClick(Sender: TObject);
@@ -717,7 +740,7 @@ begin
         tblCard.Insert;
         tblCardTransDate.Value:= dtNow;
         tblCardTransTime.Value:= dtNow;
-        tblCardTransCode.Value:= 'IN';
+        tblCardTransCode.Value:= 'OUT';
         tblCardTransType.Value:= cboTransType.Text;
         if (cboTransType.Text= 'RETURN TO SUPPLIER') or (cboTransType.Text='REPLACE RETURN ITEM') or (cboTransType.Text='ADJUSTMENT') then
         begin

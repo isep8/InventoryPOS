@@ -32,7 +32,7 @@ var
 
 implementation
 
-uses uInterface, uSiteMaster;
+uses uInterface, uSiteMaster, uMain, uMainModuleMenu;
 
 {$R *.dfm}
 

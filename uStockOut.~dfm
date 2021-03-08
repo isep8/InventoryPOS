@@ -1,6 +1,6 @@
 object frmStockOut: TfrmStockOut
-  Left = 200
-  Top = 40
+  Left = 349
+  Top = 114
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Stock Out Window'
@@ -861,6 +861,7 @@ object frmStockOut: TfrmStockOut
         Expanded = False
         FieldName = 'TotalPrice'
         Title.Caption = 'Total Price'
+        Width = 75
         Visible = True
       end>
   end

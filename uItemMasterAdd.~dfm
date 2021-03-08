@@ -1,6 +1,6 @@
 object frmItemMasterAdd: TfrmItemMasterAdd
-  Left = 187
-  Top = 108
+  Left = 272
+  Top = 173
   Width = 767
   Height = 458
   Caption = 'Item Master (add/update)'
@@ -591,6 +591,7 @@ object frmItemMasterAdd: TfrmItemMasterAdd
     ParentFont = False
     TabOrder = 16
     Text = '0.0'
+    Visible = False
     Precision = 1
   end
   object tblRef: TffTable

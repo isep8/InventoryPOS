@@ -100,7 +100,7 @@ procedure TfrmSiteMasterAdd.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
     if (key = vk_F6) then
-    begin           F
+    begin           
         btnSave.Click;
     end;
 

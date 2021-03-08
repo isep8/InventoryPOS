@@ -1,6 +1,6 @@
 object frmGeneralInquiry: TfrmGeneralInquiry
-  Left = 156
-  Top = 32
+  Left = 365
+  Top = 23
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'General Inquiry'
@@ -587,7 +587,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 26
         Width = 191
         Height = 154
-        Date = 41034.519841354170000000
+        Date = 41034.563302638890000000
         TabOrder = 0
         OnClick = dtCalClick
       end
@@ -799,8 +799,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
           end>
       end
       object btnShow: TBitBtn
-        Left = 534
-        Top = 144
+        Left = 486
+        Top = 0
         Width = 99
         Height = 25
         Caption = 'Retrieve'
@@ -934,6 +934,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Width = 135
         Height = 103
         TabOrder = 7
+        Visible = False
         object Label19: TLabel
           Left = 15
           Top = 2
@@ -948,6 +949,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
           Height = 17
           Caption = 'CASH'
           TabOrder = 0
+          Visible = False
         end
         object rbCreditCard: TRadioButton
           Left = 21
@@ -956,6 +958,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
           Height = 17
           Caption = 'CREDIT CARD'
           TabOrder = 1
+          Visible = False
         end
         object rbCredit: TRadioButton
           Left = 21
@@ -964,6 +967,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
           Height = 17
           Caption = 'CREDIT'
           TabOrder = 2
+          Visible = False
         end
         object rbAll: TRadioButton
           Left = 22
@@ -981,7 +985,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 27
         Width = 191
         Height = 154
-        Date = 41034.519841388890000000
+        Date = 41034.563302696760000000
         TabOrder = 8
         OnClick = dtSCal2Click
       end
@@ -1200,7 +1204,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.519841423610000000
+        Date = 41034.563302754630000000
         TabOrder = 4
         OnClick = dtCal2Click
       end
@@ -1378,7 +1382,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.519841458340000000
+        Date = 41034.563302824080000000
         TabOrder = 1
         OnClick = dtCal3Click
       end
@@ -1523,7 +1527,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.519841458340000000
+        Date = 41034.563302824080000000
         TabOrder = 2
         OnClick = dtCal4Click
       end
@@ -1755,6 +1759,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
     object TabSheet6: TTabSheet
       Caption = 'AR(Account Receivables)'
       ImageIndex = 6
+      TabVisible = False
       object grpARPerDay: TGroupBox
         Left = 13
         Top = 161
@@ -2216,7 +2221,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.519841539350000000
+        Date = 41034.563303020830000000
         TabOrder = 0
         OnClick = dtCal5Click
       end
@@ -2485,6 +2490,14 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Caption = 'Reorder Qty'
         Visible = False
       end
+      object lblDestinationName: TLabel
+        Left = 287
+        Top = 257
+        Width = 87
+        Height = 13
+        Caption = 'Destination Name:'
+        Visible = False
+      end
       object lstReport: TListBox
         Left = 5
         Top = 69
@@ -2506,7 +2519,6 @@ object frmGeneralInquiry: TfrmGeneralInquiry
           ''
           'STOCK IN'
           'STOCK OUT'
-          'STOCKIN/STOCKOUT'
           ''
           'SOLD ITEMS'
           'SOLD ITEMS BY LOCATION'
@@ -2514,14 +2526,6 @@ object frmGeneralInquiry: TfrmGeneralInquiry
           ''
           'GROSS SALES REPORT'
           'GROSS SOLD ITEMS'
-          ''
-          'ACCOUNT RECEIVABLES'
-          ''
-          'COLLECTION REPORT'
-          'COLLECTION REPORT PER INVOICE'
-          ''
-          'OR SUMMARY'
-          'CM SUMMARY'
           ''
           'ITEM MASTER'
           'REORDER ITEMS'
@@ -2531,7 +2535,11 @@ object frmGeneralInquiry: TfrmGeneralInquiry
             '--'
           'SMALL PAPER'
           ''
-          '01.) SALES SUMMARY PER USER')
+          '01.) SALES SUMMARY PER USER'
+          
+            '----------------------------------------------------------------' +
+            '--'
+          'STOCKIN/STOCKOUT')
         TabOrder = 0
         OnClick = lstReportClick
         OnKeyUp = lstReportKeyUp
@@ -2677,8 +2685,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         TabOrder = 5
       end
       object grpLocation: TGroupBox
-        Left = 245
-        Top = 253
+        Left = 541
+        Top = 165
         Width = 291
         Height = 84
         Caption = 'Location'
@@ -2723,8 +2731,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         end
       end
       object grpBalYearMonth: TGroupBox
-        Left = 246
-        Top = 342
+        Left = 542
+        Top = 62
         Width = 292
         Height = 79
         Caption = 'Select Year and Month'
@@ -2791,6 +2799,17 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         TabOrder = 8
         Visible = False
         OnClick = btnInOUTClick
+      end
+      object cboDestinationName: TComboBox
+        Left = 384
+        Top = 256
+        Width = 145
+        Height = 19
+        Style = csOwnerDrawFixed
+        DropDownCount = 20
+        ItemHeight = 13
+        TabOrder = 9
+        Visible = False
       end
     end
   end

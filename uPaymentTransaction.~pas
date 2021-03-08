@@ -172,7 +172,7 @@ try
     dblChange:= dblCash - frmPOS.LdblTotalNetAmount;
     dblChange:= StrToFloat( FormatFloat('########0.00', dblChange) );
     frmPOS.lblChange.Caption:= FormatFloat('###,###,##0.00', dblChange);
-    lblChange.Caption:= FormatFloat('###,###,##0.00', dblChange);
+       lblChange.Caption:= FormatFloat('###,###,##0.00', dblChange);
 
 
     //generate new reference no
@@ -195,7 +195,7 @@ try
         tblRefLastInvoiceNo.Value:=tblRefLastInvoiceNo.Value + 1;
         tblRef.Post;
 
-        frmPOS.edtRefNo.Text:= FormatDateTime('yy', now)+ Format('%.*d',[6, tblRefLastInvoiceNo.Value]) ; //tblRefLastRefYY.AsString +  Format('%.*d',[2,  tblRefLastRefMM.Value]) + '-' + Format('%.*d',[5, tblRefLastReferenceNo.Value]);
+        frmPOS.edtRefNo.Text:= FormatDateTime('yymm', now)+ Format('%.*d',[6, tblRefLastInvoiceNo.Value]) ; //tblRefLastRefYY.AsString +  Format('%.*d',[2,  tblRefLastRefMM.Value]) + '-' + Format('%.*d',[5, tblRefLastReferenceNo.Value]);
         tblRef.Close;
     end;
 
@@ -204,9 +204,9 @@ try
     if not frmPOS.tblMast.Active then frmPOS.tblMast.Open;
     frmPOS.tblMast.IndexFieldNames:= 'ItemCode';
     dblTotalDiscount:= 0.00;
-    dblTotalOrigPriceHdr:= 0.00;
+     dblTotalOrigPriceHdr:= 0.00;
     dblTotalOrigPriceDet:= 0.00;
-    dblTZeroRated:= 0.00;
+         dblTZeroRated:= 0.00;
     dblTVatExempt:= 0.00;
     dblTVatAmount:= 0.00;
     dblTNonVat:= 0.00;
@@ -223,6 +223,9 @@ try
     dblZeroRated:= 0;
     dblVatExempt:= 0;
     dblNonVat:= 0;
+
+    frmPOS.LdblTotalAmount:= 0; //recompute, since it is computed during scan only, but on edit there is descrepancy
+
 
     frmPOS.tblWf.First;
     while not frmPOS.tblWf.Eof do
@@ -256,6 +259,9 @@ try
         dblNonVat:= 0;
         dblNetOfVat:= 0;
         dblVatable:= 0;
+
+        //LdblTotalAmount = initially this is computed during scan, need to recompute during finalize button
+        frmPOS.LdblTotalAmount:= frmPOS.LdblTotalAmount + frmPOS.tblWfTotalAmount.Value;
 
         dblTotalAmountDet:= frmPOS.tblWfTotalAmount.Value;
         dblQty:= frmPOS.tblWfQty.Value;
@@ -402,7 +408,7 @@ try
                 tblMastLastTransDate.Value:= dtnow;
                 if tblBalStockEnd.Value <=0 then
                     //tblMastStockBalance.Value:= 0   04152017
-                    tblMastStockBalance.Value:= tblBalStockEnd.Value;
+                    tblMastStockBalance.Value:= tblBalStockEnd.Value
                 else
                     tblMastStockBalance.Value:= tblBalStockEnd.Value;
                 tblMast.Post;
@@ -845,11 +851,11 @@ begin
     end;
 
     //toggle key
-    if (key = VK_F11) then
-    begin
+    //if (key = VK_F11) then
+    //begin
         //change mode
-        btnChangeMode.Click;
-    end;
+        //btnChangeMode.Click;
+    //end;
 end;
 
 procedure TfrmPaymentTransaction.btnChangeModeClick(Sender: TObject);

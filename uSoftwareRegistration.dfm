@@ -1,6 +1,6 @@
 object frmSoftwareRegistration: TfrmSoftwareRegistration
-  Left = 112
-  Top = 134
+  Left = 481
+  Top = 304
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Software Registration'
