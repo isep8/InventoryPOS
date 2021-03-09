@@ -1,0 +1,17 @@
+SELECT a.ItemCode, a.Barcode, a.Description, a.Qty, b.OrigPrice, (a.Qty * b.OrigPrice) as Amount FROM StockOutDetail201612 a, ItemMaster b
+where a.itemCode=b.itemCode
+
+
+
+SELECT ItemCode, Barcode, Description,  Sum(Qty) as SQty FROM StockOutDetail201612
+Group by ItemCode, Barcode, Description
+
+
+
+SELECT ItemCode, Barcode, Description, Sum(Qty) as SQty FROM SalesDetail201612
+Group by ItemCode, Barcode, Description
+
+
+Insert into WFStockInAndOUT(ItemCode, Barcode, Description, StockOUT)
+SELECT ItemCode, Barcode, Description, Sum(Qty) as SQty FROM SalesDetail201612
+Group by ItemCode, Barcode, Description

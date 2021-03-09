@@ -1,0 +1,852 @@
+object frmPaymentTransaction: TfrmPaymentTransaction
+  Left = 326
+  Top = 169
+  BorderIcons = []
+  BorderStyle = bsSingle
+  Caption = 'Payment Transaction'
+  ClientHeight = 386
+  ClientWidth = 626
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnClose = FormClose
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel2: TPanel
+    Left = 0
+    Top = 38
+    Width = 626
+    Height = 307
+    Align = alClient
+    BevelOuter = bvNone
+    Color = 13164732
+    TabOrder = 1
+    object grpCharge: TGroupBox
+      Left = 11
+      Top = 18
+      Width = 605
+      Height = 279
+      Caption = '  Credit Mode  '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 0
+      object Label2: TLabel
+        Left = 65
+        Top = 63
+        Width = 61
+        Height = 13
+        Caption = 'Client Name:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label3: TLabel
+        Left = 77
+        Top = 92
+        Width = 49
+        Height = 13
+        Caption = 'Address1:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label4: TLabel
+        Left = 77
+        Top = 122
+        Width = 49
+        Height = 13
+        Caption = 'Address2:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object lblCredit: TLabel
+        Left = 162
+        Top = 17
+        Width = 106
+        Height = 33
+        Caption = 'Php 0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clNavy
+        Font.Height = -27
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label8: TLabel
+        Left = 52
+        Top = 30
+        Width = 73
+        Height = 13
+        Caption = 'Credit Amount:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label10: TLabel
+        Left = 81
+        Top = 191
+        Width = 45
+        Height = 13
+        Caption = 'Remarks:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label12: TLabel
+        Left = 53
+        Top = 151
+        Width = 73
+        Height = 13
+        Caption = 'Payment Type:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label13: TLabel
+        Left = 404
+        Top = 151
+        Width = 73
+        Height = 13
+        Caption = 'Payment Term:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label15: TLabel
+        Left = 420
+        Top = 122
+        Width = 57
+        Height = 13
+        Caption = 'Credit Limit:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label16: TLabel
+        Left = 404
+        Top = 97
+        Width = 73
+        Height = 13
+        Caption = 'Existing Credit:'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label11: TLabel
+        Left = 551
+        Top = 159
+        Width = 31
+        Height = 13
+        Caption = 'day(s)'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object edtClientName: TEdit
+        Left = 251
+        Top = 58
+        Width = 346
+        Height = 28
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BorderStyle = bsNone
+        Color = 13164732
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 1
+      end
+      object edtAddress1: TEdit
+        Left = 162
+        Top = 88
+        Width = 231
+        Height = 28
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BorderStyle = bsNone
+        Color = 13164732
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 2
+      end
+      object edtAddress2: TEdit
+        Left = 162
+        Top = 118
+        Width = 231
+        Height = 28
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BorderStyle = bsNone
+        Color = 13164732
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 3
+      end
+      object btnSearch2: TBitBtn
+        Left = 448
+        Top = 278
+        Width = 145
+        Height = 27
+        Caption = 'F3= Search Client'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 9
+        Visible = False
+        OnClick = btnSearch2Click
+        Glyph.Data = {
+          AA040000424DAA04000000000000360000002800000013000000130000000100
+          1800000000007404000000000000000000000000000000000000C0DCC0C0DCC0
+          C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DC
+          C0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0000000C0DCC0C0DCC0C0DCC0C0
+          DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0
+          C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0000000C0DCC0C0DCC04D4D4D4D4D4D4D4D
+          4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4DC0DCC0C0
+          DCC04D4D4D4D4D4DC0DCC0000000C0DCC0C0DCC04D4D4DFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4DC0DCC04D4D4D4D4D
+          4D4D4D4DC0DCC0000000C0DCC0C0DCC04D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFF4D4D4D4D4D4D4D4D4D4D4D4DA6A6A64D4D4D4D4D4DC0DCC0
+          C0DCC0000000C0DCC0C0DCC04D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FF4D4D4DA6A6A6D3D3D3D3D3D3A6A6A64D4D4DA6A6A6C0DCC0C0DCC0C0DCC000
+          0000C0DCC0C0DCC04D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4DA6A6A6
+          D3D3D3D3D3D3FFFF4DA6A6A6A6A6A64D4D4DC0DCC0C0DCC0C0DCC0000000C0DC
+          C0C0DCC04D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4DD3D3D3D3D3D3D3
+          D3D3D3D3D3A6A6A6D3D3D34D4D4DC0DCC0C0DCC0C0DCC0000000C0DCC0C0DCC0
+          4D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4DD3D3D3FFFF4DD3D3D3D3D3
+          D3A6A6A6D3D3D34D4D4DC0DCC0C0DCC0C0DCC0000000C0DCC0C0DCC04D4D4DFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4DA6A6A6FFFF4DFFFF4DD3D3D3A6A6A6
+          A6A6A64D4D4DC0DCC0C0DCC0C0DCC0000000C0DCC0C0DCC04D4D4DFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4DA6A6A6D3D3D3D3D3D3A6A6A64D4D4DC0
+          DCC0C0DCC0C0DCC0C0DCC0000000C0DCC0C0DCC04D4D4DFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFF4D4D4D4D4D4D4D4D4D4D4D4DC0DCC0C0DCC0C0DC
+          C0C0DCC0C0DCC0000000C0DCC0C0DCC04D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4DC0DCC0C0DCC0C0DCC0C0DCC0
+          C0DCC0000000C0DCC0C0DCC04D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFF4D4D4D4D4D4D4D4D4D4D4D4DC0DCC0C0DCC0C0DCC0C0DCC0C0DCC000
+          0000C0DCC0C0DCC04D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          4D4D4DD3D3D34D4D4DC0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0000000C0DC
+          C0C0DCC04D4D4DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF4D4D4D4D
+          4D4DC0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0000000C0DCC0C0DCC0
+          4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4D4DC0DCC0C0DC
+          C0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0000000C0DCC0C0DCC0C0DCC0C0
+          DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0
+          C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0000000C0DCC0C0DCC0C0DCC0C0DCC0C0DC
+          C0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0DCC0C0
+          DCC0C0DCC0C0DCC0C0DCC0000000}
+      end
+      object edtClientID: TEdit
+        Left = 162
+        Top = 58
+        Width = 87
+        Height = 28
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BorderStyle = bsNone
+        CharCase = ecUpperCase
+        Color = 13164732
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 0
+      end
+      object edtPaymentType: TEdit
+        Left = 162
+        Top = 148
+        Width = 119
+        Height = 28
+        TabStop = False
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BorderStyle = bsNone
+        CharCase = ecUpperCase
+        Color = 13164732
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 4
+      end
+      object edtPaymentTerm: TEdit
+        Left = 490
+        Top = 146
+        Width = 55
+        Height = 28
+        TabStop = False
+        BevelInner = bvNone
+        BevelKind = bkFlat
+        BorderStyle = bsNone
+        Color = 13164732
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        ReadOnly = True
+        TabOrder = 5
+      end
+      object Panel5: TPanel
+        Left = 12
+        Top = 247
+        Width = 126
+        Height = 28
+        BevelInner = bvLowered
+        BevelOuter = bvNone
+        Color = 13164732
+        TabOrder = 10
+        object Label9: TLabel
+          Left = 19
+          Top = 7
+          Width = 86
+          Height = 13
+          Caption = 'F3= Search Client'
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clNavy
+          Font.Height = -11
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Transparent = False
+        end
+      end
+      object edtCreditBalance: TNxNumberEdit
+        Left = 488
+        Top = 92
+        Width = 109
+        Height = 24
+        TabStop = False
+        Alignment = taCenter
+        Color = 13164732
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 7
+        Text = '0.00'
+        Options = [eoAllowAll, eoAllowFloat, eoAllowSigns]
+      end
+      object edtCreditLimit: TNxNumberEdit
+        Left = 489
+        Top = 117
+        Width = 108
+        Height = 24
+        TabStop = False
+        Alignment = taCenter
+        Color = 13164732
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 8
+        Text = '0.00'
+        Options = [eoAllowAll, eoAllowFloat, eoAllowSigns]
+      end
+      object mmoRemarks: TNxMemo
+        Left = 161
+        Top = 179
+        Width = 305
+        Height = 46
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        MaxLength = 150
+        ParentFont = False
+        TabOrder = 6
+      end
+    end
+    object grpAmount: TGroupBox
+      Left = 11
+      Top = 29
+      Width = 605
+      Height = 172
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Miriam'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 1
+      object Label17: TLabel
+        Left = 15
+        Top = 29
+        Width = 220
+        Height = 32
+        Caption = 'Tendered Amount:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlue
+        Font.Height = -27
+        Font.Name = 'Miriam'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object lblAmount: TLabel
+        Left = 536
+        Top = 76
+        Width = 47
+        Height = 34
+        Alignment = taRightJustify
+        Caption = '0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlue
+        Font.Height = -27
+        Font.Name = 'Impact'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label6: TLabel
+        Left = 14
+        Top = 76
+        Width = 165
+        Height = 32
+        Caption = 'Total Amount:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlue
+        Font.Height = -27
+        Font.Name = 'Miriam'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Label7: TLabel
+        Left = 16
+        Top = 125
+        Width = 103
+        Height = 32
+        Caption = 'Change:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -27
+        Font.Name = 'Miriam'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object lblChange: TLabel
+        Left = 534
+        Top = 125
+        Width = 47
+        Height = 34
+        Alignment = taRightJustify
+        Caption = '0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clRed
+        Font.Height = -27
+        Font.Name = 'Impact'
+        Font.Style = []
+        ParentFont = False
+        Transparent = True
+      end
+      object Panel4: TPanel
+        Left = 399
+        Top = 23
+        Width = 185
+        Height = 41
+        BevelOuter = bvNone
+        Caption = 'Panel4'
+        TabOrder = 0
+        object edtCash: TNxNumberEdit
+          Left = 0
+          Top = 0
+          Width = 185
+          Height = 41
+          Align = alClient
+          Alignment = taRightJustify
+          Color = clTeal
+          Font.Charset = ANSI_CHARSET
+          Font.Color = clLime
+          Font.Height = -27
+          Font.Name = 'Impact'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          Text = '0.00'
+          OnKeyDown = edtCashKeyDown
+        end
+      end
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 626
+    Height = 38
+    Align = alTop
+    BevelOuter = bvNone
+    Color = clTeal
+    TabOrder = 0
+    TabStop = True
+    object Label1: TLabel
+      Left = 6
+      Top = 4
+      Width = 128
+      Height = 20
+      Caption = 'Mode of Payment:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clLime
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object lblModeOfPayment: TLabel
+      Left = 147
+      Top = 4
+      Width = 33
+      Height = 20
+      Caption = 'Cash'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clLime
+      Font.Height = -16
+      Font.Name = 'Impact'
+      Font.Style = []
+      ParentFont = False
+      Transparent = True
+    end
+    object btnChangeMode: TBitBtn
+      Left = 473
+      Top = 2
+      Width = 144
+      Height = 35
+      Caption = 'F12 = Change Mode'
+      TabOrder = 0
+      Visible = False
+      OnClick = btnChangeModeClick
+      Glyph.Data = {
+        FE0A0000424DFE0A00000000000036000000280000001E0000001E0000000100
+        180000000000C80A0000C40E0000C40E00000000000000000000FFFEFFFFFBFC
+        FFFEFEFFFFFEFFFFFCF9FFFBF6FEFDF6FEFEFBFEFFFFFEFFFFFEFFFFFDFEFFFD
+        FFFFFDFFFFFCFFFFFDFFFDFFFFFBFDFEFFFDFFFFFBFFFEFCFBFFFFFEDDDBE1E3
+        E5E6F8FCF6FDFFF7FFFFF7FFFDF5FEFCFCFFFDFF0000FFFFFFFFFDFDFFFFFEFF
+        FFFEFCFFFDFBFFFEFAFFFEFAFFFFFDFFFFFFFEFFFFFEFFFFFEFFFFFEFFFFFFFF
+        FFFEFFFFFEFFFBFFFFF8FCFDFBFCFFFCFCFFF8FEFFF5FCFFD4D6E1D0D3D8E3E7
+        E2FDFFF6FFFFF7FFFFFBFFFCFEFEFDFF0000F8FFFFF8FFFFF9FBFBFDFFFFFDFF
+        FFFDFFFEFBFFFEF9FCFAFFFFFEFFFEFDFFFEFEFEFEFEFFFFFEFFFFFEFFFEFFFF
+        FFFEF9FFFBF8FFFEFBFFFFF4FDFFE2F8FF445C78AEBBD1BDC3D0C9CBCCE1E0DC
+        FFFFFEFEFCFCFFFEFFFBFBFF0000F4FFFDF8FFFFF8FDFEFDFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFEFFFFFEFFFFFEFDFFFFFBFFFEFBFFFBFDFFFBFFFFFCFFFFFEF6FF
+        FCF4FFFFF3FDFFBFD0E3A5C9F1386493355F898BA8C7B2B9CAD4D0D6DCD9DBFF
+        FFFFFDFFFFFCFDFF0000FAFFFDFBFFFFFBFEFFFBFCFFFFFEFFFFFDFFFEF7FCFF
+        FDFFFFFDFFFDFFFFF7FFFEF6FFFCFAFFF7FBFFF7FCFFFAFBFDFDFAFEFFC7D1DB
+        B0C1D49CBBDC79ABDF1D64A33995D6105D96879FC3B7B5C8CBCED2DFE4E2F8FD
+        FCF9FEFD0000FFFFFFFDFDFDFDFFFFFFFCFDFFFFFBFFFDF8E5D2CFE0CECDDDD0
+        CED8D1CED3D3CDD1D5C9D6D8C5D3D6C7CBD0CFBFCBD597B2C6608AA73B739624
+        6A990D609D056DB41698E52092D9215A8E8AA3C3A7B7C3C7D2D0D8DFDCFBFFFE
+        0000FFFEFFFFFCFEFFFEFEFFFFF9FFFFEEEED0B5DEBCA4DAB9A5D7B9A8D4B8A7
+        D3BBA9D1B9A5CFB8A2C9BBAFB2B2BE708FAE2876A11684B81E9ED31AA5DE18A4
+        E70EA0E8049EE90D9DE52997D9145D8F84AAC2ABBDC4CED9D7DEE5E00000FFFC
+        FEFFFEFFFFFFFFFFFDF3836B4F8E6E4B7E5F4083654C765B47775D4C765B477A
+        5F4B765D4D5A535041596F498AB637ABE414AAEA03AAE900ACEB03ACEF04ADF1
+        00A3E704A7EC12A2E92A98D425628A97B4C9C0CED4DDE4E10000FFFFFFFDFBFB
+        F9F9F9FFFFF7807255FAE9C8F4E9D3E8E2D5E5E3DBE2DFD7EBE0D8E7DED5DCD9
+        D4B6D0D7428BAB44B6E51DB0E80DB3F009B2F500AEF000B0EB00B2EA00B0E900
+        AAE608AAEB1BA0E3489BD833628EBCCFDEDDE2E30000FFFFFEFEFFFDFDFFFFFF
+        FFF884795BFCEFCFEBE8D9E2E6E1DCE4E3E4EAE9E4E1DDE2E0DFD5E0E46B99AB
+        4EB8DD2ABEED0EB6EC08B8F402AFEE0AB3F10EB3EC0BB3E807B7EC09B7EC11AF
+        EB2EADEA2774AD9AC2ECECFCFFFAFFFF0000FFFFFEFEFFFDFDFDFDFFFFF78876
+        59FFF0D3F4EBE2ECECECE5E7E7DFE2E0E8E5E1E5E4E6D8E2F3497B975DD4FB1A
+        BAEA0ABBEE07BCF30BBDF427C6FF43C5FF3CC1FB10B3EA12B6EB32B6EB1C77A4
+        9BC3E0F1FBFFF8FFFFF9FEFC0000FCFFFDFDFFFFFFFEFFFFFFF88E795EFFF4DA
+        F9EDE9ECE7E9EDECE8EFEFE9EBE8E3E5E6EACFDCF2477C9D6AE1FF1ABBE70CBB
+        ED14BFF225BCE9229FCC3692C72687BF3DC7FC32BCEB1E7DA599CEE9EFFEFFFF
+        FFFFFCFEFEFBFFFF0000FAFFFEFCFEFEFCFBFDFFFDF6988167FFF0D8FAEBE9F5
+        EEF1EFEEE4EAEDDEEDEFE3E2E8E7D6E3F95282A471DEFE32C5EB1EBEEE2CBDEB
+        3395B375B8D3A5D9FF4584B071D3FF1D7B9F9ECDE2E8FAFFFBFFFFFCFDFBFBFE
+        FFFAFCFF0000FDFFFEFCFEFEFFFEFFFFFFF9927D62FFF5DBFFF2ECF5EDEDCDCC
+        C2C2C5B6C4C6BABCC1C0B0BACC5E86A277D4F355D7FC30BDEE1A92BC96D2E2C5
+        E2EBCFE8FC5F819E4881A196C9E3ECFDFFFFFFFFFFFFFCFDFFFFFAFEFFF7FCFF
+        0000FFFFFCFDFEFCFDFEFFFFFCF99B886DFFF7D8FFF4E8F7F3EEF2F4EEF0F3EA
+        F6F2EDF5F0F1E9EAF4A9C5D666AFCD7BE4FF42BBED3394BAC7EDF1E1EAE0E0E8
+        E8758088A2AFBDC4CFDDF8FDFFFDFDFFFBFEFFFBFFFFFBFFFFFAFFFF0000FFFF
+        FCFFFFFEF9FAFEFFFFFB97866CFFF7DBFFFAEDEFF2F0E6F6FCE0F0F6F1F1F1F2
+        EDEAF4F2F2D7E9F07EB3C884D3F479DCFF4396B6C9E7E8F2F2E4F5EFE2726960
+        BDB3B3D2CBD0FFFDFFFDFDFFFBFEFFFBFFFFFDFFFFFDFFFE0000FDFBFAFFFFFE
+        FAFDFBFFFFF89A8871FFFBE4FEF6EFEBF8FF6D99B19BC5DCB9C5C5C6C4BABCBD
+        B4B0BBB895B1B86EA1B17CCCE576BFD5A7C8D1E9EDE7FFEFDC856D59C6BAB0DB
+        D4D1FFFFFFFFFFFFFFFFFFFFFFFEFFFFFEFFFFFE0000FFFFFCFFFFFCFDFFFEFF
+        FDF4A18C77FFFCEAF7F6F2D8F9FF3181A6277B9FC7F4FFE2F9FBE3F7F8E7F6F8
+        EAF5F9CDE4EC83B4C27DB1C17E9FAEE5EFEFFFF6DF887054C5BCAFD3D0CCFFFF
+        FEFFFFFEFFFFFCFFFFFCFFFFFEFFFFFE0000FFFFFBFDFEFAFBFCFAFFFFF9A186
+        72FFFEECF4FFFDBFFAFF0685AC3EC8F71C7EA6ADF4FFC2F6FFD4F3FFEEF2FDF7
+        F5FBEBF7FDCDE1EC91ABBC9AAAB1FFF7E1867659B9B9ADCDD2D0FDFFFFFFFEFF
+        FDFFFCFDFFFBFFFFFCFFFFFC0000FFFFFCFCFFFBFDFFFEFFFFF8AD9179FFFEEA
+        D4FFFF41A5BD11AED920CBFF38C5F8097FAE187CA6377E9F9DB9CAB5B8C0B7B6
+        B8B8BDC0DCEFFEB6C6CCE8DDC7887A5DB9BBAFCDD3D2FDFEFFFFFEFFFFFFFEFD
+        FFFBFDFFFCFDFFFC0000F8FDFEF9FFFEFAFFFCFFFFF2AA8E6FFFFFF04AACB837
+        CFF221CFFA15C9FA23CCFF27CBFA27CCF343CCEC2D7C97D5FCFFEFFBFBFCFFFB
+        EBF9F8F5FDF6FFFEE78B7A5FBBB7ACD0D3D1FFFEFFFFFEFFFFFFFEFFFFFCFFFF
+        FEFFFFFE0000FAFEFFFAFFFFF8FFFAFFFFF4B19876F7FFEE38A7B743E9FF0AB9
+        E108BBE809BBEC01B6E402BCE42FCFEF43A4C0CAFCFFF1FFFFF5F6F2FAFFFBFF
+        FFF7FFFDE3927D67BEB7AED2D3D1FFFEFFFFFEFFFFFFFEFFFFFEFFFFFEFDFFFE
+        0000FFFCFFFFFEFFFAFFFFFFFFF2B39B7FFEFFEE51A7B36CF6FF43E3FF39E2FF
+        38DDFF38DDFF3BE0FF55E0FF56A5BA96BBC9B2BBC8BBB9BFFFFDFCFFFFF5FFFF
+        E9927F6AB9B3ACD0D2D2FBFFFFFBFFFFFFFFFFFFFFFEFBFFFEFAFFFE0000FFF9
+        FFFFFDFFFCFEFEFFFFF7AA9379FFFFEFCBFFFF45A3B638A8BE28A3BD2FA7CB2E
+        A3CA30A3C445A2BBC9FEFFE6FFFFF3F9FFFFFCFFFFFFFBFFFEF1FFFFED91806B
+        C4BCB5D1CFCFFDFFFFFDFFFFFFFFFFFFFFFFFBFFFEFAFFFC0000FFFEFFFFFFFE
+        FEFCFBFFFFF7B69E86FFFFEAF4FFFEE1FFFFDDFFFFDAFFFFD7FEFFDAFEFFDFFE
+        FFE4FFFFE9FCFFF2FEFFFBFEFFFCFCFCFFFFFBFFFFF4FFFFE997866CC8BCB8D9
+        CFD5FFFEFFFFFEFFFFFDFFFFFEFFFFFFFEFFFFFB0000FBFEFCFCFDFBFFFFFEFF
+        FFF8AF9980FFFFEAFFFFF4FFFFF6FFFEF7FFFFF8FFFFFBFFFFF9FFFEF6FFFCF4
+        FFFFF9FFFFF8FFFFF7FFFFF5FFFFF4FFFFEDFFFFE39F8A6ED7C7C1FFFDFFFFFE
+        FFFFFEFFFFFDFFFFFEFFFFFFFEFFFFFB0000F8FFFFFAFFFFFBFEFCFFFFF7B09F
+        84B39C7CAF9C81B19D84B09882B29A84AD9680AF9980AA9879AE997DA89078A9
+        9179A89374A48F6FA48C70B19577B28F6DA7876AFFFFF5FFFBFBFDFFFEFAFFFF
+        FBFFFFFFFFFFFFFFFEFFFFFC0000F8FDFFF9FEFFFDFFFEFFFFF8FFFFEDFFFFEA
+        FFFFEBFFFFEAFFFFEDFFFFECFFFFEAFFFFEAFFFFE7FFFFE4FFFFEBFFFFEBFFFF
+        E7FFFFE7FFFFE9FFFFE7FFFFE9FFFFEEFFFFF8FFFFFCFBFFFEF8FFFEFAFFFEFD
+        FFFEFFFEFFFFFDFF0000FFFEFFFFFDFEFFFFFCFFFFFAFFFDFBFFFFFBFFFFF8FF
+        FFF6FFFFF9FFFFF9FFFFF7FFFFF5FFFFF3FFFFF5FFFFF7FFFFF8FFFEF3FFFFF7
+        FFFFF5FFFFF8FFFBF8FFFEFFFFFEFFFFFFFFFDFFFFFBFFFEFBFFFCFFFFFEFFFD
+        FFFFFBFF0000FFFDFFFFFDFDFFFEF9FFFFFCFFFBFFFFFDFFF8FDFCFBFFFEFFFD
+        FFFFFEFFFFFFFCFDFFF9FFFFFCFFFFFCFCFFFDF9FEFCFAFFFFFBFFFEFFFFFEFC
+        FEFEFAFCFFF8FDFFF9F9FFFFFEFFFFFFFFFDFFFEFDFFFCFFFFFEFFFDFFFFFAFF
+        0000}
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 345
+    Width = 626
+    Height = 41
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = clTeal
+    TabOrder = 2
+    object btnSave: TBitBtn
+      Left = 403
+      Top = 4
+      Width = 105
+      Height = 35
+      Caption = 'F6 = SAVE'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnClick = btnSaveClick
+      Glyph.Data = {
+        AA040000424DAA04000000000000360000002800000013000000130000000100
+        1800000000007404000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F0000
+        7F0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFF7F0000007F00007F007F
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFF000000FFFFFFFFFFFFFFFFFF7F0000007F00007F00007F00007F007F00
+        00FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF00
+        0000FFFFFFFFFFFF7F0000007F00007F00007F00007F00007F00007F007F0000
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFF
+        FF7F0000007F00007F00007F0000FF00007F00007F00007F00007F007F0000FF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFF007F00
+        007F00007F0000FF00FFFFFF00FF00007F00007F00007F007F0000FFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFF00FF00007F0000
+        FF00FFFFFFFFFFFFFFFFFF00FF00007F00007F00007F007F0000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFF00FF00FFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFF00FF00007F00007F00007F007F0000FFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFF00FF00007F00007F00007F007F0000FFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFF00FF00007F00007F00007F007F0000FFFFFFFFFFFFFFFFFF
+        FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF00FF00007F00007F00007F007F0000FFFFFFFFFFFFFFFFFF00
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF00FF00007F00007F00007F007F0000FFFFFFFFFFFF000000FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFF00FF00007F00007F007F0000FFFFFFFFFFFF000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFF00FF00007F00007F00FFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFF00FF00FFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFF000000}
+    end
+    object btnCancel: TBitBtn
+      Left = 515
+      Top = 4
+      Width = 101
+      Height = 35
+      Caption = 'ESC = Cancel'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnCancelClick
+      Glyph.Data = {
+        6E040000424D6E04000000000000360000002800000013000000120000000100
+        1800000000003804000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFF
+        FFFF808080808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF0000FF0000
+        80000080808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF808080FFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF0000FF000080000080
+        000080808080FFFFFFFFFFFFFFFFFF0000FF000080000080808080FFFFFFFFFF
+        FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF0000FF00008000008000008000
+        0080808080FFFFFF0000FF000080000080000080000080808080FFFFFFFFFFFF
+        FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFF0000FF0000800000800000800000
+        80808080000080000080000080000080000080808080FFFFFFFFFFFFFFFFFF00
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF000080000080000080000080
+        000080000080000080000080808080FFFFFFFFFFFFFFFFFFFFFFFF000000FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF00008000008000008000008000
+        0080000080808080FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000800000800000800000800000808080
+        80FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFF0000FF000080000080000080000080808080FFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFF0000FF000080000080000080000080000080808080FFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF
+        000080000080000080808080000080000080000080808080FFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFF0000FF00008000008000
+        0080808080FFFFFF0000FF000080000080000080808080FFFFFFFFFFFFFFFFFF
+        FFFFFF000000FFFFFFFFFFFFFFFFFFFFFFFF0000FF000080000080808080FFFF
+        FFFFFFFFFFFFFF0000FF000080000080000080808080FFFFFFFFFFFFFFFFFF00
+        0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000FF000080FFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFF0000FF000080000080000080FFFFFFFFFFFFFFFFFF000000FFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFF0000FF0000800000FFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000}
+    end
+    object Panel6: TPanel
+      Left = 11
+      Top = 9
+      Width = 190
+      Height = 28
+      BevelInner = bvLowered
+      BevelOuter = bvNone
+      Color = clTeal
+      TabOrder = 2
+      Visible = False
+      object Label5: TLabel
+        Left = 13
+        Top = 8
+        Width = 165
+        Height = 16
+        Caption = 'F11= Change Payment Mode'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clLime
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        Transparent = False
+        Visible = False
+      end
+    end
+    object btnGetCreditBalance: TBitBtn
+      Left = 264
+      Top = 8
+      Width = 113
+      Height = 25
+      Caption = 'Get Credit Balance'
+      TabOrder = 3
+      Visible = False
+      OnClick = btnGetCreditBalanceClick
+    end
+  end
+  object qry2Chk: TffQuery
+    DatabaseName = 'AndroidPOS'
+    SessionName = 'Sess1'
+    SQL.Strings = (
+      'Select * from UnpaidInvoices')
+    Left = 507
+    Top = 256
+  end
+end
