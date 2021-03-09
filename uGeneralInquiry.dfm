@@ -587,7 +587,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 26
         Width = 191
         Height = 154
-        Date = 41034.704923773150000000
+        Date = 41034.999106793980000000
         TabOrder = 0
         OnClick = dtCalClick
       end
@@ -985,7 +985,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 27
         Width = 191
         Height = 154
-        Date = 41034.704923854170000000
+        Date = 41034.999106875000000000
         TabOrder = 8
         OnClick = dtSCal2Click
       end
@@ -1204,7 +1204,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.704923935180000000
+        Date = 41034.999106956020000000
         TabOrder = 4
         OnClick = dtCal2Click
       end
@@ -1382,7 +1382,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.704924004630000000
+        Date = 41034.999107002320000000
         TabOrder = 1
         OnClick = dtCal3Click
       end
@@ -1527,7 +1527,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.704924027780000000
+        Date = 41034.999107013890000000
         TabOrder = 2
         OnClick = dtCal4Click
       end
@@ -2221,7 +2221,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.704924282410000000
+        Date = 41034.999107164350000000
         TabOrder = 0
         OnClick = dtCal5Click
       end

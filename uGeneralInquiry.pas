@@ -1534,7 +1534,7 @@ var rpt1: TRvProject;
 
 begin
 try
-    //stock out 03.09.2021
+    //stock out March.09.2021
     rpt1:= TRvProject.Create(self);
     rpt1.Engine:= RvSystem1;
     LstrReportPath:= frmMain.edtReportPath.Text;
