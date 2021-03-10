@@ -1,6 +1,6 @@
 object frmGeneralInquiry: TfrmGeneralInquiry
-  Left = 365
-  Top = 23
+  Left = 244
+  Top = 91
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'General Inquiry'
@@ -587,7 +587,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 26
         Width = 191
         Height = 154
-        Date = 41034.563302638890000000
+        Date = 41034.185949513890000000
         TabOrder = 0
         OnClick = dtCalClick
       end
@@ -985,7 +985,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 27
         Width = 191
         Height = 154
-        Date = 41034.563302696760000000
+        Date = 41034.185949548610000000
         TabOrder = 8
         OnClick = dtSCal2Click
       end
@@ -1204,7 +1204,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.563302754630000000
+        Date = 41034.185949594910000000
         TabOrder = 4
         OnClick = dtCal2Click
       end
@@ -1382,7 +1382,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.563302824080000000
+        Date = 41034.185949618060000000
         TabOrder = 1
         OnClick = dtCal3Click
       end
@@ -1527,7 +1527,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.563302824080000000
+        Date = 41034.185949629630000000
         TabOrder = 2
         OnClick = dtCal4Click
       end
@@ -2221,7 +2221,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.563303020830000000
+        Date = 41034.185949722220000000
         TabOrder = 0
         OnClick = dtCal5Click
       end
@@ -2809,6 +2809,15 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         DropDownCount = 20
         ItemHeight = 13
         TabOrder = 9
+        Visible = False
+      end
+      object chkPrice: TCheckBox
+        Left = 384
+        Top = 280
+        Width = 177
+        Height = 17
+        Caption = 'Include Price in the report'
+        TabOrder = 10
         Visible = False
       end
     end
@@ -3682,8 +3691,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         'Sum(TotalNetOfVat) as TNetOfVat '
       'from SalesDetail201207'
       'Group by EnteredDate, ItemCode, Description')
-    Left = 371
-    Top = 312
+    Left = 395
+    Top = 392
     object StringField1: TStringField
       FieldName = 'ItemCode'
     end
@@ -3746,8 +3755,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
     SessionName = 'Sess1'
     SQL.Strings = (
       'Select * from SalesReport')
-    Left = 493
-    Top = 307
+    Left = 341
+    Top = 395
     object qry2GrossCutoffYear: TIntegerField
       FieldName = 'CutoffYear'
     end
@@ -3921,8 +3930,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
       
         'Sum(AmountPaid) as TAmountPaid, Sum(RemBalance) as TRemBalance F' +
         'rom ChargesBalTemp')
-    Left = 432
-    Top = 311
+    Left = 440
+    Top = 391
   end
   object qry2ARTTL: TffQuery
     DatabaseName = 'AndroidPOS'
