@@ -4802,7 +4802,7 @@ object frmPOS: TfrmPOS
         Size = 15
       end>
     SessionName = 'Sess1'
-    TableName = 'SalesDetail201605'
+    TableName = 'SalesDetail202103'
     Left = 302
     Top = 235
     object tblWfRefNo: TStringField

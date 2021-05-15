@@ -1,6 +1,6 @@
 object frmItemMaster: TfrmItemMaster
-  Left = 7
-  Top = 32
+  Left = 210
+  Top = 108
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Item Master'
@@ -1179,6 +1179,7 @@ object frmItemMaster: TfrmItemMaster
     end
   end
   object grdMast: TDBGrid
+    Tag = 1
     Left = 129
     Top = 76
     Width = 1092
@@ -1536,6 +1537,24 @@ object frmItemMaster: TfrmItemMaster
         Title.Font.Style = []
         Width = 76
         Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'WSCost5'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        Title.Caption = 'Inventory Flag'
+        Title.Color = clSkyBlue
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -11
+        Title.Font.Name = 'MS Sans Serif'
+        Title.Font.Style = []
+        Width = 72
+        Visible = True
       end>
   end
   object edtSearch: TEdit
@@ -1739,8 +1758,8 @@ object frmItemMaster: TfrmItemMaster
     OnClick = btnServiceClick
   end
   object btnSupplier: TButton
-    Left = 671
-    Top = 39
+    Left = 567
+    Top = -1
     Width = 94
     Height = 25
     Caption = 'Refresh Supplier'
@@ -1749,8 +1768,8 @@ object frmItemMaster: TfrmItemMaster
     OnClick = btnSupplierClick
   end
   object btnLoad: TBitBtn
-    Left = 766
-    Top = 38
+    Left = 662
+    Top = -1
     Width = 83
     Height = 25
     Caption = 'Load Item Master'
@@ -2013,6 +2032,36 @@ object frmItemMaster: TfrmItemMaster
         0000}
     end
   end
+  object btnAddEx: TButton
+    Left = 744
+    Top = 0
+    Width = 75
+    Height = 25
+    Caption = 'btnAddEx'
+    TabOrder = 13
+    Visible = False
+    OnClick = btnAddExClick
+  end
+  object Button1: TButton
+    Left = 632
+    Top = 48
+    Width = 139
+    Height = 25
+    Caption = 'Toggle Item as menu item'
+    TabOrder = 14
+    Visible = False
+    OnClick = Button1Click
+  end
+  object btnMenu: TBitBtn
+    Left = 776
+    Top = 48
+    Width = 89
+    Height = 25
+    Caption = 'View Menu Items'
+    TabOrder = 15
+    Visible = False
+    OnClick = btnMenuClick
+  end
   object tblMast: TffTable
     DatabaseName = 'AndroidPOS'
     FieldDefs = <
@@ -2107,7 +2156,7 @@ object frmItemMaster: TfrmItemMaster
       item
         Name = 'StandardLocation'
         DataType = ftString
-        Size = 10
+        Size = 20
       end
       item
         Name = 'LastTransDate'
@@ -2121,6 +2170,170 @@ object frmItemMaster: TfrmItemMaster
         Name = 'ProdCategory'
         DataType = ftString
         Size = 20
+      end
+      item
+        Name = 'ProdSize'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ProdUM'
+        DataType = ftString
+        Size = 3
+      end
+      item
+        Name = 'ProdColor'
+        DataType = ftString
+        Size = 10
+      end
+      item
+        Name = 'ProdHeight'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ProdHeightUM'
+        DataType = ftString
+        Size = 3
+      end
+      item
+        Name = 'ProdWeight'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ProdWeightUM'
+        DataType = ftString
+        Size = 3
+      end
+      item
+        Name = 'WSQty1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty2'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty3'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty4'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty5'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty6'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSUM1'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM2'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM3'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM4'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM5'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM6'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSDesc1'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc2'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc3'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc4'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc5'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc6'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSEQPcs1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs2'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs3'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs4'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs5'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs6'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost2'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost3'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost4'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost5'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost6'
+        DataType = ftFloat
       end
       item
         Name = 'EnteredDT'
@@ -2207,7 +2420,6 @@ object frmItemMaster: TfrmItemMaster
     end
     object tblMastStandardLocation: TStringField
       FieldName = 'StandardLocation'
-      Size = 10
     end
     object tblMastVat: TFloatField
       FieldName = 'Vat'
@@ -2231,6 +2443,9 @@ object frmItemMaster: TfrmItemMaster
     end
     object tblMastEqItemCode: TStringField
       FieldName = 'EqItemCode'
+    end
+    object tblMastWSCost5: TFloatField
+      FieldName = 'WSCost5'
     end
   end
   object dsMast: TDataSource
@@ -2289,7 +2504,6 @@ object frmItemMaster: TfrmItemMaster
     end
     object qry2MastStandardLocation: TStringField
       FieldName = 'StandardLocation'
-      Size = 10
     end
     object qry2MastLastTransDate: TDateField
       FieldName = 'LastTransDate'
@@ -2331,6 +2545,9 @@ object frmItemMaster: TfrmItemMaster
     end
     object qry2MastEqItemCode: TStringField
       FieldName = 'EqItemCode'
+    end
+    object qry2MastWSCost5: TFloatField
+      FieldName = 'WSCost5'
     end
   end
   object tblBal: TffTable
@@ -2423,8 +2640,9 @@ object frmItemMaster: TfrmItemMaster
     Top = 343
   end
   object rvDsItem: TRvDataSetConnection
+    Tag = 1
     RuntimeVisibility = rtDeveloper
-    DataSet = qry2Chk
+    DataSet = qry2Mast
     Left = 680
     Top = 344
   end

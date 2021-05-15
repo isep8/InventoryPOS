@@ -9,7 +9,7 @@ uses
   RpRender, RpRenderPDF, Menus;
 
 type
-ThackDbGrid = Class(TDBGrid);
+ThackDbGrid = Class(TDBGrid);     
   TfrmPOS = class(TForm)
     Panel1: TPanel;
     Panel3: TPanel;

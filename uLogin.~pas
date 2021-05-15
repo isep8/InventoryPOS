@@ -69,9 +69,10 @@ begin
     //bypass login if account is default by programmer
     if trim(LowerCase(edtUserID.Text))='isep' then
     begin
-        if edtPassword.Text='is3p_PQS' then
+        if edtPassword.Text='incredJ10' then
         begin
             gsUserID:= edtUserID.Text;
+            gsDatabaseName:='AndroidPOS';
             gsProgramName:= 'ANDROIDPOS';
             edtPassword.Text:= 'incredJ10';
             frmMain.edtRole.Text:= 'ADMIN';

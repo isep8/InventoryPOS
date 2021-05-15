@@ -818,6 +818,7 @@ end;
 procedure TfrmPOS.btnEndClick(Sender: TObject);
 begin
 
+    //check items if not empty
     if tblWf.Active then
     begin
         if tblWf.RecordCount<= 0 then
@@ -835,7 +836,7 @@ begin
         Exit;
     end;
 
-    //btnCompute.Click;
+    //Format float
     LdblTotalNetAmount:= strtoFloat(formatfloat('#########.00',LdblTotalNetAmount));
     LdblTotalNetOfVat:= strtoFloat(formatfloat('#########.00',LdblTotalNetOfVat));
     LdblTotalVat:= strtoFloat(formatfloat('#########.00',LdblTotalVat));
@@ -857,7 +858,7 @@ begin
         end
         else
         begin
-            //messageDlg('Transaction Successful!',mtInformation,[mbOk],0);
+            //successful, no printout
         end;
 
         //Print PDF

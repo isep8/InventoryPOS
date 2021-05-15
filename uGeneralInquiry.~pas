@@ -2239,7 +2239,6 @@ try
                 rpt1.ProjectFile:= LstrReportPath + '\StockOut2.rav';
                 if not chkPDF.Checked then rpt1.Execute;
             end;
-
         end;
 
         qry2Chk.close;

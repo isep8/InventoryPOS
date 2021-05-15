@@ -104,6 +104,11 @@ type
     BitBtn3: TBitBtn;
     Label4: TLabel;
     Label5: TLabel;
+    btnAddEx: TButton;
+    Button1: TButton;
+    tblMastWSCost5: TFloatField;
+    qry2MastWSCost5: TFloatField;
+    btnMenu: TBitBtn;
     procedure btnAddClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure btnEditClick(Sender: TObject);
@@ -131,6 +136,9 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure btnAddExClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure btnMenuClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -144,7 +152,7 @@ var
 implementation
 
 uses uItemMasterAdd, uMain, uInterface, uItemUploading, uPrintBarcode,
-  Math, uRawMaterials;
+  Math, uRawMaterials, uExpirationDate ;
 
 {$R *.dfm}
 
@@ -269,12 +277,12 @@ begin
         edtShortDesc.Text:= qry2Mast.FieldByName('ShortDesc').AsString;
         edtOrigAmt.text:= qry2Mast.FieldByName('OrigPrice').AsString;
         edtSellingPrice.Text:= qry2Mast.FieldByName('SellingPrice').AsString;
-        edtWholesalePrice.Text:= FormatFloat('###,###,###.00', qry2Mast.FieldByName('WholesalePrice').Value);
+        edtWholesalePrice.Text:= FormatFloat('#########.00', qry2Mast.FieldByName('WholesalePrice').Value);
         edtReorderPointQty.Text:= qry2Mast.FieldByName('ReorderPointQty').AsString;
         cboUM.ItemIndex:= cboUM.Items.IndexOf(qry2Mast.FieldByName('UnitOfMeasure').AsString);
         cboSupplierName.ItemIndex:= cboSupplierName.Items.IndexOf(qry2Mast.FieldByName('SupplierName').AsString);
         cboAppliedVat.ItemIndex:= cboAppliedVat.Items.IndexOf(qry2Mast.FieldByName('AppliedVatFlag').AsString);
-        edtStockBalance.Text:= FormatFloat('###,###,###.0', qry2Mast.FieldByName('StockBalance').Value);
+        edtStockBalance.Text:= FormatFloat('#########.0', qry2Mast.FieldByName('StockBalance').Value);
         edtStockEdit.Text:= qry2Mast.FieldByName('StockBalance').AsString;  //112016
         edtVat.Text:= FormatFloat('###',(qry2Mast.FieldByName('Vat').value * 100));
     end;
@@ -798,6 +806,70 @@ begin
         grdMast.SetFocus;
     end;
 
+end;
+
+procedure TfrmItemMaster.btnAddExClick(Sender: TObject);
+begin
+    frmExpirationDate.edtItemCode.Text:= qry2MastItemCode.Text;
+    frmExpirationDate.edtBarcode.Text:= qry2MastBarcode.Text;
+    frmExpirationDate.edtDescription.Text:= qry2MastDescription.Text;
+    frmExpirationDate.Show;
+end;
+
+procedure TfrmItemMaster.Button1Click(Sender: TObject);
+begin
+    If (qry2Mast.Active) or (qry2Mast.RecordCount > 0) then
+    begin
+        if qry2MastWSCost5.Value = 0 then
+        begin
+            with qry2Chk do
+            begin
+                Close;
+                SQL.clear;
+                SQL.Add('Update ItemMaster');
+                SQL.Add('Set WSCost5=:asWSCost5');
+                SQL.Add('Where ItemCode=:asItemCode');
+                ParamByName('asWSCost5').Value:= 1;
+                ParamByName('asItemCode').Value:= qry2MastItemCode.AsString;
+                ExecSql;
+                Close;
+            end;
+            //item successfully updated
+            messageDlg('Item was set to menu item.',mtInformation,[mbOk],0);
+            exit;
+        end
+        else if qry2MastWSCost5.Value = 1 then
+        begin
+            with qry2Chk do
+            begin
+                Close;
+                SQL.clear;
+                SQL.Add('Update ItemMaster');
+                SQL.Add('Set WSCost5=:asWSCost5');
+                SQL.Add('Where ItemCode=:asItemCode');
+                ParamByName('asWSCost5').Value:= 0;
+                ParamByName('asItemCode').Value:= qry2MastItemCode.AsString;
+                ExecSql;
+                Close;
+            end;
+            //item successfully updated
+            messageDlg('Item was set to inventory item.',mtInformation,[mbOk],0);
+            exit;
+        end
+    end
+end;
+
+procedure TfrmItemMaster.btnMenuClick(Sender: TObject);
+begin
+    with qry2Mast do
+    begin
+        Close;
+        sql.Clear;
+        sql.Add('Select * from ItemMaster');
+        sql.Add('Where WSCost5=1');
+        SQL.Add('Order by ItemCode');
+        qry2Mast.Open;
+    end;
 end;
 
 end.

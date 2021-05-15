@@ -74,7 +74,8 @@ uses
   uUnpaidInvoices in 'uUnpaidInvoices.pas' {frmUnpaidInvoices},
   uInvoicePayments in 'uInvoicePayments.pas' {frmInvoicePayments},
   uPrintPayment in 'uPrintPayment.pas' {frmPrintPayment},
-  uUnitCost in 'uUnitCost.pas' {frmUnitCost};
+  uUnitCost in 'uUnitCost.pas' {frmUnitCost},
+  uExpirationDate in 'uExpirationDate.pas' {frmExpirationDate};
 
 {$R *.res}
 
@@ -98,6 +99,7 @@ begin
   Application.CreateForm(TfrmInvoicePayments, frmInvoicePayments);
   Application.CreateForm(TfrmPrintPayment, frmPrintPayment);
   Application.CreateForm(TfrmUnitCost, frmUnitCost);
+  Application.CreateForm(TfrmExpirationDate, frmExpirationDate);
   //Application.CreateForm(TfrmRawMaterials, frmRawMaterials);
   //Application.CreateForm(TfrmReprintTransaction, frmReprintTransaction);
   Application.CreateForm(TfrmClientMasterAdd, frmClientMasterAdd);

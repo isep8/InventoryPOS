@@ -122,8 +122,11 @@ var dblCash: Double;
     dblCreditBalance, dblCreditLimit: double;
     dblAllowableCredit: Double;
     dblNewCreditAmt: double;
+
+    intMenuItem: integer; //0 - inventory item, 1 = menu item -> this don't need to calculate the ending balance
 begin
 try
+
     dblAveDiscount:= 0;
     dblCreditBalance:= 0.00;
     dblCreditLimit:= 0.00;
@@ -132,6 +135,8 @@ try
     intMonthNow:= MonthOf(now);
     strMode:= lblModeOfPayment.Caption;
     dtNow:= now;
+
+    intMenuItem:= 0;
 
     //Validate cash vs. total amount
     if (strmode='CASH')or (strmode = 'CARD') then
@@ -206,7 +211,7 @@ try
     dblTotalDiscount:= 0.00;
      dblTotalOrigPriceHdr:= 0.00;
     dblTotalOrigPriceDet:= 0.00;
-         dblTZeroRated:= 0.00;
+    dblTZeroRated:= 0.00;
     dblTVatExempt:= 0.00;
     dblTVatAmount:= 0.00;
     dblTNonVat:= 0.00;
@@ -374,18 +379,55 @@ try
             end
             else
             begin
-                //compute end qty
-                if not chkReturn.Checked then
+                //compute end qty , Do not calculate if it is a menu items
+                with qry2Chk do
                 begin
-                    dblStockOut:= tblBalStockOut.Value + (tblWfQty.Value * -1);
-                    dblStockIn:= tblBalStockIn.Value;
-                    dblEndQty:= (tblBalBegQty.Value + dblStockIn)+(dblStockOut);
+                    Close;
+                    SQL.clear;
+                    SQL.Add('Select ItemCode, WSCost5 From ItemMaster');
+                    SQL.Add('Where ItemCode=:asItemCode');
+                    ParamByName('asItemCode').Value:= tblWfItemCode.AsString;
+                    Open;
+                end;
+                If (qry2Chk.Active) or (qry2Chk.RecordCount > 0) then
+                begin
+                    intMenuItem:= qry2Chk.fieldByName('WSCost5').Value;
                 end
                 else
                 begin
-                    dblStockOut:= tblBalStockOut.Value;;
-                    dblStockIn:= tblBalStockIn.Value +  (tblWfQty.Value*-1);
-                    dblEndQty:= (tblBalBegQty.Value + dblStockIn)+(dblStockOut);
+                    intMenuItem:= 0;
+                end;
+                qry2Chk.Close;
+
+                if (intMenuItem=1) then
+                begin
+                    if not chkReturn.Checked then
+                    begin
+                        dblStockOut:= tblBalStockOut.Value + (tblWfQty.Value * -1);
+                        dblStockIn:= tblBalStockIn.Value;
+                        dblEndQty:= 0; //(tblBalBegQty.Value + dblStockIn)+(dblStockOut);
+                    end
+                    else
+                    begin
+                        dblStockOut:= tblBalStockOut.Value;;
+                        dblStockIn:= tblBalStockIn.Value +  (tblWfQty.Value*-1);
+                        dblEndQty:= 0; //(tblBalBegQty.Value + dblStockIn)+(dblStockOut);
+                    end;
+                end
+                else if (intMenuItem=0) then
+                begin
+                    if not chkReturn.Checked then
+                    begin
+                        dblStockOut:= tblBalStockOut.Value + (tblWfQty.Value * -1);
+                        dblStockIn:= tblBalStockIn.Value;
+                        dblEndQty:= (tblBalBegQty.Value + dblStockIn)+(dblStockOut);
+                    end
+                    else
+                    begin
+                        dblStockOut:= tblBalStockOut.Value;;
+                        dblStockIn:= tblBalStockIn.Value +  (tblWfQty.Value*-1);
+                        dblEndQty:= (tblBalBegQty.Value + dblStockIn)+(dblStockOut);
+                    end;
                 end;
 
                 //update 'stockout qty' and 'end qty'

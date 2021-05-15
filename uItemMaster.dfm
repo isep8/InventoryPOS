@@ -1,6 +1,6 @@
 object frmItemMaster: TfrmItemMaster
-  Left = 68
-  Top = 64
+  Left = 210
+  Top = 108
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Item Master'
@@ -1179,6 +1179,7 @@ object frmItemMaster: TfrmItemMaster
     end
   end
   object grdMast: TDBGrid
+    Tag = 1
     Left = 129
     Top = 76
     Width = 1092
@@ -1536,6 +1537,24 @@ object frmItemMaster: TfrmItemMaster
         Title.Font.Style = []
         Width = 76
         Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'WSCost5'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        Title.Caption = 'Inventory Flag'
+        Title.Color = clSkyBlue
+        Title.Font.Charset = DEFAULT_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -11
+        Title.Font.Name = 'MS Sans Serif'
+        Title.Font.Style = []
+        Width = 72
+        Visible = True
       end>
   end
   object edtSearch: TEdit
@@ -1739,8 +1758,8 @@ object frmItemMaster: TfrmItemMaster
     OnClick = btnServiceClick
   end
   object btnSupplier: TButton
-    Left = 671
-    Top = 39
+    Left = 567
+    Top = -1
     Width = 94
     Height = 25
     Caption = 'Refresh Supplier'
@@ -1749,8 +1768,8 @@ object frmItemMaster: TfrmItemMaster
     OnClick = btnSupplierClick
   end
   object btnLoad: TBitBtn
-    Left = 766
-    Top = 38
+    Left = 662
+    Top = -1
     Width = 83
     Height = 25
     Caption = 'Load Item Master'
@@ -2012,6 +2031,36 @@ object frmItemMaster: TfrmItemMaster
         F9F9FFFFFFFEFEFEF0F0F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFFFFFDFFFF
         0000}
     end
+  end
+  object btnAddEx: TButton
+    Left = 744
+    Top = 0
+    Width = 75
+    Height = 25
+    Caption = 'btnAddEx'
+    TabOrder = 13
+    Visible = False
+    OnClick = btnAddExClick
+  end
+  object Button1: TButton
+    Left = 632
+    Top = 48
+    Width = 139
+    Height = 25
+    Caption = 'Toggle Item as menu item'
+    TabOrder = 14
+    Visible = False
+    OnClick = Button1Click
+  end
+  object btnMenu: TBitBtn
+    Left = 776
+    Top = 48
+    Width = 89
+    Height = 25
+    Caption = 'View Menu Items'
+    TabOrder = 15
+    Visible = False
+    OnClick = btnMenuClick
   end
   object tblMast: TffTable
     DatabaseName = 'AndroidPOS'
@@ -2395,6 +2444,9 @@ object frmItemMaster: TfrmItemMaster
     object tblMastEqItemCode: TStringField
       FieldName = 'EqItemCode'
     end
+    object tblMastWSCost5: TFloatField
+      FieldName = 'WSCost5'
+    end
   end
   object dsMast: TDataSource
     DataSet = qry2Mast
@@ -2452,7 +2504,6 @@ object frmItemMaster: TfrmItemMaster
     end
     object qry2MastStandardLocation: TStringField
       FieldName = 'StandardLocation'
-      Size = 10
     end
     object qry2MastLastTransDate: TDateField
       FieldName = 'LastTransDate'
@@ -2494,6 +2545,9 @@ object frmItemMaster: TfrmItemMaster
     end
     object qry2MastEqItemCode: TStringField
       FieldName = 'EqItemCode'
+    end
+    object qry2MastWSCost5: TFloatField
+      FieldName = 'WSCost5'
     end
   end
   object tblBal: TffTable
@@ -2586,8 +2640,9 @@ object frmItemMaster: TfrmItemMaster
     Top = 343
   end
   object rvDsItem: TRvDataSetConnection
+    Tag = 1
     RuntimeVisibility = rtDeveloper
-    DataSet = qry2Chk
+    DataSet = qry2Mast
     Left = 680
     Top = 344
   end

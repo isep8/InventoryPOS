@@ -72,6 +72,7 @@ begin
         if edtPassword.Text='incredJ10' then
         begin
             gsUserID:= edtUserID.Text;
+            gsDatabaseName:='AndroidPOS';
             gsProgramName:= 'ANDROIDPOS';
             edtPassword.Text:= 'incredJ10';
             frmMain.edtRole.Text:= 'ADMIN';
@@ -109,6 +110,7 @@ begin
         begin
 
             gsUserID:= edtUserID.Text;
+            gsDatabaseName:='AndroidPOS';
             //edtPassword.Text:= '';
             gsProgramName:= 'ANDROIDPOS';
             gsUserRole:= tblUserUserRole.AsString;

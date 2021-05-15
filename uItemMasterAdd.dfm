@@ -1,8 +1,8 @@
 object frmItemMasterAdd: TfrmItemMasterAdd
   Left = 272
   Top = 173
-  Width = 767
-  Height = 458
+  Width = 741
+  Height = 468
   Caption = 'Item Master (add/update)'
   Color = 13164732
   Font.Charset = DEFAULT_CHARSET
@@ -18,10 +18,10 @@ object frmItemMasterAdd: TfrmItemMasterAdd
   PixelsPerInch = 96
   TextHeight = 13
   object Bevel1: TBevel
-    Left = 22
+    Left = 6
     Top = 33
     Width = 709
-    Height = 334
+    Height = 344
     Shape = bsFrame
   end
   object Label2: TLabel
@@ -52,7 +52,7 @@ object frmItemMasterAdd: TfrmItemMasterAdd
   end
   object Label1: TLabel
     Left = 76
-    Top = 69
+    Top = 61
     Width = 78
     Height = 20
     Caption = 'Item Code:'
@@ -156,7 +156,7 @@ object frmItemMasterAdd: TfrmItemMasterAdd
   end
   object lblNote2: TLabel
     Left = 35
-    Top = 340
+    Top = 348
     Width = 578
     Height = 16
     Caption = 
@@ -262,7 +262,7 @@ object frmItemMasterAdd: TfrmItemMasterAdd
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 751
+    Width = 725
     Height = 29
     Align = alTop
     Color = 10459466
@@ -297,7 +297,7 @@ object frmItemMasterAdd: TfrmItemMasterAdd
     Visible = False
   end
   object edtItemCode: TNxEdit
-    Left = 160
+    Left = 168
     Top = 57
     Width = 299
     Height = 28
@@ -344,17 +344,19 @@ object frmItemMasterAdd: TfrmItemMasterAdd
     Text = '0.00'
   end
   object cboUM: TComboBox
-    Left = 632
+    Left = 613
     Top = 263
-    Width = 73
+    Width = 91
     Height = 28
     BevelKind = bkFlat
+    CharCase = ecUpperCase
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ItemHeight = 20
+    MaxLength = 3
     ParentFont = False
     TabOrder = 9
   end
@@ -408,8 +410,8 @@ object frmItemMasterAdd: TfrmItemMasterAdd
   end
   object Panel2: TPanel
     Left = 0
-    Top = 372
-    Width = 751
+    Top = 382
+    Width = 725
     Height = 47
     Align = alBottom
     Color = 10459466
@@ -535,6 +537,7 @@ object frmItemMasterAdd: TfrmItemMasterAdd
     ParentFont = False
     TabOrder = 6
     Text = '0.00'
+    OnExit = edtWholesalePriceExit
   end
   object cboAppliedVat: TComboBox
     Left = 168

@@ -84,6 +84,7 @@ type
     procedure FormKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure cboAppliedVatChange(Sender: TObject);
+    procedure edtWholesalePriceExit(Sender: TObject);
   private
     { Private declarations }
   public
@@ -176,7 +177,7 @@ begin
         exit;
     end;
 
-    //validate reorder qty, um,
+    //validate unit of measure
     if trim(cboUM.Text)='' then
     begin
         messageDlg('Unit of Measure is blank!',mtError, [mbOk],0);
@@ -309,7 +310,9 @@ begin
                     tblMastLastUpdProg.Value:= 'ANDROIDPOS';
                     tblMastLastUpdDT.Value:= now;
 
-                    tblMastStockBalance.Value:= StrToFloat(FormatFloat('#########.0',strtoFloat(edtStockBalance.Text)));
+                    tblMastStockBalance.Value:= StrToFloat(FormatFloat('#########.00',( strtoFloat(edtStockBalance.Text))));
+
+
 
 
                     Post;
@@ -323,6 +326,35 @@ begin
             end;
         tblMast.Close;
         end; //with tblmast
+
+        //add to unit of measure
+        with qry2Chk do
+        begin
+            Close;
+            SQL.clear;
+            SQL.Add('Select * From UnitOfMeasure');
+            SQL.Add('Where UMCode=:asUMCode');
+            ParamByName('asUMCode').Value:= Trim(cboUM.Text);
+            Open;
+        end;
+        If (not qry2Chk.Active) or (qry2Chk.RecordCount = 0) then
+        begin
+            qry2Chk.close;
+            //insert
+            with qry2Chk do
+            begin
+                Close;
+                SQL.clear;
+                SQL.Add('Insert into UnitOfMeasure(UMCode)');
+                SQL.Add('Values(:asUMCode)');
+                ParamByName('asUMCode').Value:= Trim(cboUM.Text);
+                ExecSql;
+                Close;
+            end;
+            qry2Chk.Close;
+            exit;
+        end;
+        qry2Chk.Close;
     end;
 
     //insert to stock balance
@@ -506,6 +538,13 @@ begin
     begin
         edtVat.Text:= '0.00';
     end;
+end;
+
+procedure TfrmItemMasterAdd.edtWholesalePriceExit(Sender: TObject);
+begin
+    //edtWholesalePrice.Text:= FormatFloat('#########.00', StrToFloat(edtWholesalePrice.text));
+
+
 end;
 
 end.

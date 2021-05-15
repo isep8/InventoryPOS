@@ -587,7 +587,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 26
         Width = 191
         Height = 154
-        Date = 41034.185949513890000000
+        Date = 41034.292465763890000000
         TabOrder = 0
         OnClick = dtCalClick
       end
@@ -985,7 +985,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 27
         Width = 191
         Height = 154
-        Date = 41034.185949548610000000
+        Date = 41034.292465821760000000
         TabOrder = 8
         OnClick = dtSCal2Click
       end
@@ -1204,7 +1204,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.185949594910000000
+        Date = 41034.292465902780000000
         TabOrder = 4
         OnClick = dtCal2Click
       end
@@ -1382,7 +1382,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.185949618060000000
+        Date = 41034.292466006950000000
         TabOrder = 1
         OnClick = dtCal3Click
       end
@@ -1527,7 +1527,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.185949629630000000
+        Date = 41034.292466018520000000
         TabOrder = 2
         OnClick = dtCal4Click
       end
@@ -2221,7 +2221,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.185949722220000000
+        Date = 41034.292466342590000000
         TabOrder = 0
         OnClick = dtCal5Click
       end
@@ -2814,7 +2814,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
       object chkPrice: TCheckBox
         Left = 384
         Top = 280
-        Width = 177
+        Width = 161
         Height = 17
         Caption = 'Include Price in the report'
         TabOrder = 10
@@ -3823,8 +3823,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
     FontEncoding = feWinAnsiEncoding
     DocInfo.Creator = 'Rave (http://www.nevrona.com/rave)'
     DocInfo.Producer = 'Nevrona Designs'
-    Left = 561
-    Top = 278
+    Left = 553
+    Top = 334
   end
   object SaveDialog1: TSaveDialog
     Filter = '*.pdf|*.PDF'
