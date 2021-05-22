@@ -347,6 +347,7 @@ try
             tblDetEnteredMM.Value:= MonthOf(dtnow);
             tblDetEnteredDD.Value:= DayOf(dtnow);
             tblDetEnteredBy.Value:= gsUserID;
+            tblDetLocation.Value:= tblWfLocation.Value;
             tblDet.Post;
 
             //deduct in balance
@@ -380,6 +381,7 @@ try
             else
             begin
                 //compute end qty , Do not calculate if it is a menu items
+                //zero out the end qty if it is a menu item
                 with qry2Chk do
                 begin
                     Close;
@@ -550,7 +552,10 @@ try
         tblHdrTerminalNo.Value:= frmPOS.LstrTerminalNo;
         tblHdrRefNo.Value:= frmPOS.edtRefNo.Text;
         tblHdrInvoiceNumber.Value:= StrToInt(edtRefNo.Text);
-        tblHdrSoldTo.Value:= UpperCase(frmPOS.edtCustomerType.Text);
+        tblHdrSoldTo.Value:= 'WALK-IN';
+        tblHdrSoldTo2.Value:= UpperCase(frmPOS.edtCustomerType.Text); //name of person
+        tblHdrSoldToAddress1.Value:= edtAdd1.Text;
+        tblHdrSoldToAddress2.Value:= edtAdd2.Text;
 
 
         //set discount

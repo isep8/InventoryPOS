@@ -580,6 +580,25 @@ type
     cboDestinationName: TComboBox;
     lblDestinationName: TLabel;
     chkPrice: TCheckBox;
+    rvByCustomer: TRvDataSetConnection;
+    qry2ByCustomer: TffQuery;
+    dsByCustomer: TDataSource;
+    qry2ByCustomerrefno: TStringField;
+    qry2ByCustomersoldto: TStringField;
+    qry2ByCustomersoldtoaddress1: TStringField;
+    qry2ByCustomersoldtoaddress2: TStringField;
+    qry2ByCustomertotalItems: TIntegerField;
+    qry2ByCustomertotalOrigPrice: TFloatField;
+    qry2ByCustomerTotalAmount: TFloatField;
+    qry2ByCustomerNetAmount: TFloatField;
+    qry2ByCustomerItemCode: TStringField;
+    qry2ByCustomerbarcode: TStringField;
+    qry2ByCustomerDescription: TStringField;
+    qry2ByCustomerLocation: TStringField;
+    qry2ByCustomerdiscountamt: TFloatField;
+    qry2ByCustomerEnteredDate: TDateField;
+    qry2ByCustomerUnitOfMeasure: TStringField;
+    qry2ByCustomerQty: TFloatField;
     procedure FormShow(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnCardClick(Sender: TObject);
@@ -2295,6 +2314,90 @@ try
     end;
 
     //Sold Items
+    if strReport = 'SOLD ITEMS PER CUSTOMER NAME' then
+    begin
+        //validate
+        if not FileExists(frmMain.edtSystemDrive.Text + '\ff2\AndroidPOS\SalesDetail'+  Format('%.*d',[2, yearof(dtFrom.Date)]) + Format('%.*d',[2, monthof(dtFrom.Date)])+'.ff2') then
+        begin
+            messageDlg('No transaction on selected date.',mtError, [mbOk],0);
+            exit;
+        end;
+
+        //validate
+        if IntToStr(YearOf(dtFrom.Date)) + IntToStr(MonthOf(dtFrom.Date)) <> IntToStr(YearOf(dtTo.Date)) + IntToStr(MonthOf(dtTo.Date)) then
+        begin
+            messageDlg('Please select within the same month only.',mtInformation, [mbOk],0);
+            exit;
+        end;
+
+            //dsRpt.DataSet:= qry2Rpt;
+            //dsBalance.DataSet:= qry2Rpt;
+            With qry2ByCustomer do
+            begin
+                Close;
+                SQL.clear;
+                SQL.Add('SELECT distinct a.refno, a.soldto, a.soldtoaddress1, a.soldtoaddress2, a.totalItems, a.totalOrigPrice, a.TotalAmount, b.NetAmount, b.ItemCode, b.barcode, b.Description, b.Location, b.discountamt, b.enteredDate, b.UnitOfMeasure, b.Qty FROM SalesHeader' +  Format('%.*d',[2, yearof(dtFrom.Date)]) + Format('%.*d',[2, monthof(dtFrom.Date)]) );
+                SQL.Add('a inner join SalesDetail' +  Format('%.*d',[2, yearof(dtFrom.Date)]) + Format('%.*d',[2, monthof(dtFrom.Date)]) + ' b');
+                SQL.Add('on a.RefNo = b.RefNo');
+                SQL.Add('WHERE a.status = ''ACTIVE'' and (a.EnteredDate>=:asEnteredDate1 and a.EnteredDate<=:asEnteredDate2)');
+                ParamByName('asEnteredDate1').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtFrom.Date));
+                ParamByName('asEnteredDate2').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtTo.Date));
+                SQL.Add('Group by a.refno, a.soldto, a.soldtoaddress1, a.soldtoaddress2, a.totalItems, a.totalOrigPrice, a.TotalAmount, b.NetAmount, b.ItemCode, b.barcode, b.Description, b.Location, b.discountamt, b.enteredDate, b.UnitOfMeasure, b.Qty');
+                open;
+            end;
+
+            rpt1.SetParam('Header1', frmMain.edtHeader1.Text);
+            rpt1.SetParam('Header2', frmMain.edtHeader2.Text);
+            rpt1.SetParam('Header3', frmMain.edtHeader3.Text);
+            rpt1.SetParam('DateFrom', FormatDateTime('mm/dd/yyyy', dtFrom.Date));
+            rpt1.SetParam('DateTo', FormatDateTime('mm/dd/yyyy', dtTo.Date));
+            rpt1.ProjectFile:= LstrReportPath + '\SoldItemsPerCustomerName.rav';
+            if not chkPDF.Checked then rpt1.Execute;
+    end;
+
+     //Sold Items
+    if strReport = 'SOLD ITEMS PER CUSTOMER PER PAGE' then
+    begin
+        //validate
+        if not FileExists(frmMain.edtSystemDrive.Text + '\ff2\AndroidPOS\SalesDetail'+  Format('%.*d',[2, yearof(dtFrom.Date)]) + Format('%.*d',[2, monthof(dtFrom.Date)])+'.ff2') then
+        begin
+            messageDlg('No transaction on selected date.',mtError, [mbOk],0);
+            exit;
+        end;
+
+        //validate
+        if IntToStr(YearOf(dtFrom.Date)) + IntToStr(MonthOf(dtFrom.Date)) <> IntToStr(YearOf(dtTo.Date)) + IntToStr(MonthOf(dtTo.Date)) then
+        begin
+            messageDlg('Please select within the same month only.',mtInformation, [mbOk],0);
+            exit;
+        end;
+
+            //dsRpt.DataSet:= qry2Rpt;
+            //dsBalance.DataSet:= qry2Rpt;
+            With qry2ByCustomer do
+            begin
+                Close;
+                SQL.clear;
+                SQL.Add('SELECT distinct a.refno, a.soldto, a.soldtoaddress1, a.soldtoaddress2, a.totalItems, a.totalOrigPrice, a.TotalAmount, b.NetAmount, b.ItemCode, b.barcode, b.Description, b.Location, b.discountamt, b.enteredDate, b.UnitOfMeasure, b.Qty FROM SalesHeader' +  Format('%.*d',[2, yearof(dtFrom.Date)]) + Format('%.*d',[2, monthof(dtFrom.Date)]) );
+                SQL.Add('a inner join SalesDetail' +  Format('%.*d',[2, yearof(dtFrom.Date)]) + Format('%.*d',[2, monthof(dtFrom.Date)]) + ' b');
+                SQL.Add('on a.RefNo = b.RefNo');
+                SQL.Add('WHERE a.status = ''ACTIVE'' and (a.EnteredDate>=:asEnteredDate1 and a.EnteredDate<=:asEnteredDate2)');
+                ParamByName('asEnteredDate1').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtFrom.Date));
+                ParamByName('asEnteredDate2').Value:= StrToDate(FormatDateTime('mm/dd/yyyy', dtTo.Date));
+                SQL.Add('Group by a.refno, a.soldto, a.soldtoaddress1, a.soldtoaddress2, a.totalItems, a.totalOrigPrice, a.TotalAmount, b.NetAmount, b.ItemCode, b.barcode, b.Description, b.Location, b.discountamt, b.enteredDate, b.UnitOfMeasure, b.Qty');
+                open;
+            end;
+
+            rpt1.SetParam('Header1', frmMain.edtHeader1.Text);
+            rpt1.SetParam('Header2', frmMain.edtHeader2.Text);
+            rpt1.SetParam('Header3', frmMain.edtHeader3.Text);
+            rpt1.SetParam('DateFrom', FormatDateTime('mm/dd/yyyy', dtFrom.Date));
+            rpt1.SetParam('DateTo', FormatDateTime('mm/dd/yyyy', dtTo.Date));
+            rpt1.ProjectFile:= LstrReportPath + '\SoldItemsPerCustomerNamePerPage.rav';
+            if not chkPDF.Checked then rpt1.Execute;
+    end;
+
+    //Sold Items
     if strReport = 'SOLD ITEMS' then
     begin
         //validate
@@ -2447,7 +2550,7 @@ try
             rpt1.SetParam('Header3', frmMain.edtHeader3.Text);
             rpt1.SetParam('DateFrom', FormatDateTime('mm/dd/yyyy', dtFrom.Date));
             rpt1.SetParam('DateTo', FormatDateTime('mm/dd/yyyy', dtTo.Date));
-            rpt1.ProjectFile:= LstrReportPath + '\SoldItemsByLocation.rav';
+            rpt1.ProjectFile:= LstrReportPath + '\SoldItemsByDate.rav';
             if not chkPDF.Checked then rpt1.Execute;
        // end
     end;
@@ -2833,11 +2936,11 @@ begin
         grpYear.Visible:=false;
         chkPerDate.Visible:=false;
     end
-    else if (strReport = 'SOLD ITEMS') or (strReport = 'SOLD ITEMS BY LOCATION')or (strReport = 'SOLD ITEMS BY DATE') then
+    else if (strReport = 'SOLD ITEMS') or (strReport = 'SOLD ITEMS BY LOCATION')or (strReport = 'SOLD ITEMS BY DATE') or (strReport = 'SOLD ITEMS PER CUSTOMER NAME') or (strReport = 'SOLD ITEMS PER CUSTOMER PER PAGE') then
     begin
         grpCoveredDate.Visible:= true;
         grpYear.Visible:=false;
-        if (strReport = 'SOLD ITEMS BY LOCATION') then
+        if (strReport = 'SOLD ITEMS BY LOCATION') or (strReport = 'SOLD ITEMS PER CUSTOMER NAME') or (strReport = 'SOLD ITEMS PER CUSTOMER PER PAGE') then
         begin
             chkPerDate.Visible:=false;
             chkPerDate.Checked:=false;

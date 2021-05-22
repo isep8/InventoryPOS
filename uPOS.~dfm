@@ -1,6 +1,6 @@
 object frmPOS: TfrmPOS
-  Left = 125
-  Top = 22
+  Left = 277
+  Top = 37
   Width = 1130
   Height = 660
   BorderIcons = [biSystemMenu, biMaximize]
@@ -26,9 +26,9 @@ object frmPOS: TfrmPOS
   TextHeight = 13
   object Image1: TImage
     Left = 0
-    Top = 110
+    Top = 176
     Width = 1114
-    Height = 323
+    Height = 257
     Align = alClient
     Picture.Data = {
       0A544A504547496D616765FC750000FFD8FFE000104A46494600010101006000
@@ -982,14 +982,14 @@ object frmPOS: TfrmPOS
     Left = 0
     Top = 0
     Width = 1114
-    Height = 71
+    Height = 137
     Align = alTop
     BevelOuter = bvNone
     Color = clRed
     TabOrder = 0
     DesignSize = (
       1114
-      71)
+      137)
     object Image2: TImage
       Left = 149
       Top = 4
@@ -1233,8 +1233,8 @@ object frmPOS: TfrmPOS
       ParentFont = False
     end
     object Label9: TLabel
-      Left = 818
-      Top = 46
+      Left = 762
+      Top = 54
       Width = 49
       Height = 16
       Anchors = [akRight, akBottom]
@@ -1250,8 +1250,8 @@ object frmPOS: TfrmPOS
       Transparent = True
     end
     object Label15: TLabel
-      Left = 820
-      Top = 22
+      Left = 764
+      Top = 30
       Width = 64
       Height = 16
       Anchors = [akRight, akBottom]
@@ -1262,6 +1262,40 @@ object frmPOS: TfrmPOS
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 762
+      Top = 80
+      Width = 58
+      Height = 16
+      Anchors = [akRight, akBottom]
+      Caption = 'Address1:'
+      Color = clBlack
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      Transparent = True
+    end
+    object Label4: TLabel
+      Left = 762
+      Top = 104
+      Width = 58
+      Height = 16
+      Anchors = [akRight, akBottom]
+      Caption = 'Address2:'
+      Color = clBlack
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -13
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentColor = False
+      ParentFont = False
+      Transparent = True
     end
     object Panel6: TPanel
       Left = 147
@@ -1323,9 +1357,9 @@ object frmPOS: TfrmPOS
       end
     end
     object edtCustomerType: TEdit
-      Left = 900
-      Top = 45
-      Width = 210
+      Left = 840
+      Top = 53
+      Width = 270
       Height = 21
       TabStop = False
       Anchors = [akRight, akBottom]
@@ -1340,16 +1374,16 @@ object frmPOS: TfrmPOS
       Font.Height = -13
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
-      MaxLength = 40
+      MaxLength = 30
       ParentFont = False
       ReadOnly = True
       TabOrder = 2
       Text = 'WALK-IN'
     end
     object edtDT: TEdit
-      Left = 899
-      Top = 21
-      Width = 211
+      Left = 840
+      Top = 29
+      Width = 270
       Height = 21
       TabStop = False
       Anchors = [akRight, akBottom]
@@ -1365,12 +1399,12 @@ object frmPOS: TfrmPOS
       Font.Style = []
       ParentFont = False
       ReadOnly = True
-      TabOrder = 3
+      TabOrder = 5
     end
     object chkReturn: TCheckBox
-      Left = 928
-      Top = 3
-      Width = 155
+      Left = 840
+      Top = 9
+      Width = 151
       Height = 17
       Anchors = [akRight, akBottom]
       Caption = 'RETURN TRANSACTION'
@@ -1381,7 +1415,7 @@ object frmPOS: TfrmPOS
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
-      TabOrder = 4
+      TabOrder = 6
     end
     object BitBtn1: TBitBtn
       Left = 461
@@ -1389,7 +1423,7 @@ object frmPOS: TfrmPOS
       Width = 74
       Height = 18
       Caption = 'Show Invoice'
-      TabOrder = 5
+      TabOrder = 7
       Visible = False
       OnClick = BitBtn1Click
     end
@@ -1399,7 +1433,7 @@ object frmPOS: TfrmPOS
       Width = 75
       Height = 15
       Caption = 'Compute'
-      TabOrder = 6
+      TabOrder = 8
       Visible = False
       OnClick = btnComputeClick
     end
@@ -1409,7 +1443,7 @@ object frmPOS: TfrmPOS
       Width = 75
       Height = 16
       Caption = 'Scan'
-      TabOrder = 7
+      TabOrder = 9
       Visible = False
       OnClick = btnScanClick
     end
@@ -1419,9 +1453,57 @@ object frmPOS: TfrmPOS
       Width = 90
       Height = 16
       Caption = 'btnCheckIfThereIsMain'
-      TabOrder = 8
+      TabOrder = 10
       Visible = False
       OnClick = btnCheckIfThereIsMainClick
+    end
+    object edtAdd1: TEdit
+      Left = 840
+      Top = 77
+      Width = 270
+      Height = 21
+      TabStop = False
+      Anchors = [akRight, akBottom]
+      BevelEdges = [beRight, beBottom]
+      BevelInner = bvNone
+      BevelKind = bkFlat
+      BorderStyle = bsNone
+      CharCase = ecUpperCase
+      Color = clTeal
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clLime
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      MaxLength = 30
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 3
+      Text = 'ADD1'
+    end
+    object edtAdd2: TEdit
+      Left = 840
+      Top = 101
+      Width = 270
+      Height = 21
+      TabStop = False
+      Anchors = [akRight, akBottom]
+      BevelEdges = [beRight, beBottom]
+      BevelInner = bvNone
+      BevelKind = bkFlat
+      BorderStyle = bsNone
+      CharCase = ecUpperCase
+      Color = clTeal
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clLime
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      MaxLength = 30
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 4
+      Text = 'ADD2'
     end
   end
   object Panel3: TPanel
@@ -3609,7 +3691,7 @@ object frmPOS: TfrmPOS
   end
   object Panel5: TPanel
     Left = 0
-    Top = 71
+    Top = 137
     Width = 1114
     Height = 39
     Align = alTop
@@ -3793,9 +3875,9 @@ object frmPOS: TfrmPOS
   end
   object grdWf: TDBGrid
     Left = 0
-    Top = 110
+    Top = 176
     Width = 1114
-    Height = 323
+    Height = 257
     Align = alClient
     BorderStyle = bsNone
     Color = clWhite
@@ -4106,6 +4188,21 @@ object frmPOS: TfrmPOS
       item
         Name = 'VoidDT'
         DataType = ftDateTime
+      end
+      item
+        Name = 'SoldTo2'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'SoldToAddress1'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'SoldToAddress2'
+        DataType = ftString
+        Size = 30
       end>
     SessionName = 'Sess1'
     TableName = 'SalesHeaderTemp'
@@ -4201,6 +4298,18 @@ object frmPOS: TfrmPOS
     object tblHdrTotalVatable: TFloatField
       FieldName = 'TotalVatable'
     end
+    object tblHdrSoldTo2: TStringField
+      FieldName = 'SoldTo2'
+      Size = 30
+    end
+    object tblHdrSoldToAddress1: TStringField
+      FieldName = 'SoldToAddress1'
+      Size = 30
+    end
+    object tblHdrSoldToAddress2: TStringField
+      FieldName = 'SoldToAddress2'
+      Size = 30
+    end
   end
   object tblDet: TffTable
     DatabaseName = 'AndroidPOS'
@@ -4217,7 +4326,7 @@ object frmPOS: TfrmPOS
       end
       item
         Name = 'InvoiceNumber'
-        DataType = ftFloat
+        DataType = ftInteger
       end
       item
         Name = 'ItemCode'
@@ -4342,6 +4451,11 @@ object frmPOS: TfrmPOS
         Name = 'EnteredBy'
         DataType = ftString
         Size = 15
+      end
+      item
+        Name = 'Location'
+        DataType = ftString
+        Size = 20
       end>
     SessionName = 'Sess1'
     TableName = 'SalesDetailTemp'
@@ -4446,6 +4560,13 @@ object frmPOS: TfrmPOS
       FieldName = 'AppliedVatFlag'
       Size = 1
     end
+    object tblDetLocation: TStringField
+      FieldName = 'Location'
+    end
+    object tblDetSupplierName: TStringField
+      FieldName = 'SupplierName'
+      Size = 40
+    end
   end
   object tblMast: TffTable
     DatabaseName = 'AndroidPOS'
@@ -4541,7 +4662,7 @@ object frmPOS: TfrmPOS
       item
         Name = 'StandardLocation'
         DataType = ftString
-        Size = 10
+        Size = 20
       end
       item
         Name = 'LastTransDate'
@@ -4555,6 +4676,170 @@ object frmPOS: TfrmPOS
         Name = 'ProdCategory'
         DataType = ftString
         Size = 20
+      end
+      item
+        Name = 'ProdSize'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ProdUM'
+        DataType = ftString
+        Size = 3
+      end
+      item
+        Name = 'ProdColor'
+        DataType = ftString
+        Size = 10
+      end
+      item
+        Name = 'ProdHeight'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ProdHeightUM'
+        DataType = ftString
+        Size = 3
+      end
+      item
+        Name = 'ProdWeight'
+        DataType = ftFloat
+      end
+      item
+        Name = 'ProdWeightUM'
+        DataType = ftString
+        Size = 3
+      end
+      item
+        Name = 'WSQty1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty2'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty3'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty4'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty5'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSQty6'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSUM1'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM2'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM3'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM4'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM5'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSUM6'
+        DataType = ftString
+        Size = 15
+      end
+      item
+        Name = 'WSDesc1'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc2'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc3'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc4'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc5'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSDesc6'
+        DataType = ftString
+        Size = 25
+      end
+      item
+        Name = 'WSEQPcs1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs2'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs3'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs4'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs5'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSEQPcs6'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost1'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost2'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost3'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost4'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost5'
+        DataType = ftFloat
+      end
+      item
+        Name = 'WSCost6'
+        DataType = ftFloat
       end
       item
         Name = 'EnteredDT'
@@ -4659,6 +4944,9 @@ object frmPOS: TfrmPOS
     object tblMastEqItemCode: TStringField
       FieldName = 'EqItemCode'
     end
+    object tblMastStandardLocation: TStringField
+      FieldName = 'StandardLocation'
+    end
   end
   object tblWf: TffTable
     DatabaseName = 'AndroidPOS'
@@ -4731,7 +5019,7 @@ object frmPOS: TfrmPOS
       item
         Name = 'AppliedDisc'
         DataType = ftString
-        Size = 5
+        Size = 8
       end
       item
         Name = 'AppliedDiscValue'
@@ -4800,9 +5088,14 @@ object frmPOS: TfrmPOS
         Name = 'EnteredBy'
         DataType = ftString
         Size = 15
+      end
+      item
+        Name = 'Location'
+        DataType = ftString
+        Size = 20
       end>
     SessionName = 'Sess1'
-    TableName = 'SalesDetail202103'
+    TableName = 'SalesDetailTemp'
     Left = 302
     Top = 235
     object tblWfRefNo: TStringField
@@ -4896,6 +5189,9 @@ object frmPOS: TfrmPOS
     end
     object tblWfTotalNetOfVat: TFloatField
       FieldName = 'TotalNetOfVat'
+    end
+    object tblWfLocation: TStringField
+      FieldName = 'Location'
     end
   end
   object dsWf: TDataSource

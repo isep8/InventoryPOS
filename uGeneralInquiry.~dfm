@@ -1,11 +1,11 @@
 object frmGeneralInquiry: TfrmGeneralInquiry
-  Left = 244
+  Left = 95
   Top = 91
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'General Inquiry'
   ClientHeight = 613
-  ClientWidth = 1120
+  ClientWidth = 1347
   Color = 13164732
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,14 +23,14 @@ object frmGeneralInquiry: TfrmGeneralInquiry
   OnKeyUp = FormKeyUp
   OnShow = FormShow
   DesignSize = (
-    1120
+    1347
     613)
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl
     Left = 8
     Top = 8
-    Width = 1133
+    Width = 1329
     Height = 601
     ActivePage = TabSheet7
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -587,7 +587,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 26
         Width = 191
         Height = 154
-        Date = 41034.185949513890000000
+        Date = 41034.082755092590000000
         TabOrder = 0
         OnClick = dtCalClick
       end
@@ -985,7 +985,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 27
         Width = 191
         Height = 154
-        Date = 41034.185949548610000000
+        Date = 41034.082755196760000000
         TabOrder = 8
         OnClick = dtSCal2Click
       end
@@ -1204,7 +1204,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.185949594910000000
+        Date = 41034.082755300930000000
         TabOrder = 4
         OnClick = dtCal2Click
       end
@@ -1382,7 +1382,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.185949618060000000
+        Date = 41034.082755428240000000
         TabOrder = 1
         OnClick = dtCal3Click
       end
@@ -1527,7 +1527,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 15
         Width = 191
         Height = 154
-        Date = 41034.185949629630000000
+        Date = 41034.082755439810000000
         TabOrder = 2
         OnClick = dtCal4Click
       end
@@ -2221,7 +2221,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
         Top = 7
         Width = 191
         Height = 154
-        Date = 41034.185949722220000000
+        Date = 41034.082755763890000000
         TabOrder = 0
         OnClick = dtCal5Click
       end
@@ -2523,6 +2523,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
           'SOLD ITEMS'
           'SOLD ITEMS BY LOCATION'
           'SOLD ITEMS BY DATE'
+          'SOLD ITEMS PER CUSTOMER NAME'
+          'SOLD ITEMS PER CUSTOMER PER PAGE'
           ''
           'GROSS SALES REPORT'
           'GROSS SOLD ITEMS'
@@ -2814,7 +2816,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
       object chkPrice: TCheckBox
         Left = 384
         Top = 280
-        Width = 177
+        Width = 161
         Height = 17
         Caption = 'Include Price in the report'
         TabOrder = 10
@@ -3249,8 +3251,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
     SessionName = 'Sess1'
     SQL.Strings = (
       'Select * From SalesDetailTemp')
-    Left = 980
-    Top = 265
+    Left = 1092
+    Top = 289
     object qry2SDetTerminalNo: TStringField
       FieldName = 'TerminalNo'
       Size = 5
@@ -3336,8 +3338,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
     SessionName = 'Sess1'
     SQL.Strings = (
       'Select * From StockInHeader201207')
-    Left = 1092
-    Top = 254
+    Left = 1020
+    Top = 246
     object qry2InHdrTransDate: TDateField
       FieldName = 'EnteredDate'
     end
@@ -3823,8 +3825,8 @@ object frmGeneralInquiry: TfrmGeneralInquiry
     FontEncoding = feWinAnsiEncoding
     DocInfo.Creator = 'Rave (http://www.nevrona.com/rave)'
     DocInfo.Producer = 'Nevrona Designs'
-    Left = 561
-    Top = 278
+    Left = 553
+    Top = 334
   end
   object SaveDialog1: TSaveDialog
     Filter = '*.pdf|*.PDF'
@@ -4621,7 +4623,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
       'TAmount FROM '
       'ChargesHeader201603'
       'Where recordType='#39'PAYMENT'#39' and Status='#39'ACTIVE'#39)
-    Left = 829
+    Left = 845
     Top = 115
     object qry2ColModeOfPayment: TStringField
       FieldName = 'ModeOfPayment'
@@ -4789,7 +4791,7 @@ object frmGeneralInquiry: TfrmGeneralInquiry
   object dsARDet: TDataSource
     DataSet = cdARDet
     Left = 154
-    Top = 330
+    Top = 306
   end
   object cdARDet: TClientDataSet
     Aggregates = <>
@@ -4969,5 +4971,88 @@ object frmGeneralInquiry: TfrmGeneralInquiry
     SessionName = 'Sess1'
     Left = 632
     Top = 510
+  end
+  object rvByCustomer: TRvDataSetConnection
+    RuntimeVisibility = rtDeveloper
+    DataSet = qry2ByCustomer
+    Left = 861
+    Top = 287
+  end
+  object qry2ByCustomer: TffQuery
+    DatabaseName = 'AndroidPOS'
+    SessionName = 'Sess1'
+    SQL.Strings = (
+      
+        'SELECT distinct a.refno, a.soldto, a.soldtoaddress1, a.soldtoadd' +
+        'ress2, a.totalItems, a.totalOrigPrice, '
+      
+        'a.TotalAmount, b.NetAmount, b.ItemCode, b.barcode, b.Description' +
+        ', b.Location, b.discountamt, '
+      
+        'b.EnteredDate, b.UnitOfMeasure, b.Qty FROM SalesHeader202105 a i' +
+        'nner join SalesDetail202105 b'
+      'on a.RefNo = b.RefNo')
+    Left = 853
+    Top = 339
+    object qry2ByCustomerrefno: TStringField
+      FieldName = 'refno'
+      Size = 15
+    end
+    object qry2ByCustomersoldto: TStringField
+      FieldName = 'soldto'
+      Size = 15
+    end
+    object qry2ByCustomersoldtoaddress1: TStringField
+      FieldName = 'soldtoaddress1'
+      Size = 30
+    end
+    object qry2ByCustomersoldtoaddress2: TStringField
+      FieldName = 'soldtoaddress2'
+      Size = 30
+    end
+    object qry2ByCustomertotalItems: TIntegerField
+      FieldName = 'totalItems'
+    end
+    object qry2ByCustomertotalOrigPrice: TFloatField
+      FieldName = 'totalOrigPrice'
+    end
+    object qry2ByCustomerTotalAmount: TFloatField
+      FieldName = 'TotalAmount'
+    end
+    object qry2ByCustomerNetAmount: TFloatField
+      FieldName = 'NetAmount'
+    end
+    object qry2ByCustomerItemCode: TStringField
+      FieldName = 'ItemCode'
+    end
+    object qry2ByCustomerbarcode: TStringField
+      FieldName = 'barcode'
+      Size = 30
+    end
+    object qry2ByCustomerDescription: TStringField
+      FieldName = 'Description'
+      Size = 40
+    end
+    object qry2ByCustomerLocation: TStringField
+      FieldName = 'Location'
+    end
+    object qry2ByCustomerdiscountamt: TFloatField
+      FieldName = 'discountamt'
+    end
+    object qry2ByCustomerEnteredDate: TDateField
+      FieldName = 'EnteredDate'
+    end
+    object qry2ByCustomerUnitOfMeasure: TStringField
+      FieldName = 'UnitOfMeasure'
+      Size = 3
+    end
+    object qry2ByCustomerQty: TFloatField
+      FieldName = 'Qty'
+    end
+  end
+  object dsByCustomer: TDataSource
+    DataSet = qry2ByCustomer
+    Left = 850
+    Top = 386
   end
 end

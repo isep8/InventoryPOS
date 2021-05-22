@@ -384,6 +384,17 @@ ThackDbGrid = Class(TDBGrid);
     tblChargeCreditLimit: TFloatField;
     btnTempPrint: TBitBtn;
     Label1: TLabel;
+    tblWfLocation: TStringField;
+    tblHdrSoldTo2: TStringField;
+    tblHdrSoldToAddress1: TStringField;
+    tblHdrSoldToAddress2: TStringField;
+    tblDetLocation: TStringField;
+    tblDetSupplierName: TStringField;
+    tblMastStandardLocation: TStringField;
+    edtAdd1: TEdit;
+    Label2: TLabel;
+    edtAdd2: TEdit;
+    Label4: TLabel;
     procedure btnScanClick(Sender: TObject);
     procedure btnDeleteClick(Sender: TObject);
     procedure edtBarcodeKeyDown(Sender: TObject; var Key: Word;
@@ -685,6 +696,7 @@ begin
         tblWfEnteredDD.Value:= DayOf(now);
         tblWfEnteredBy.Value:= gsUserID;
         tblWfTerminalNo.Value:= LstrTerminalNo;
+        tblWfLocation.Value:= tblMastStandardLocation.Value;
         tblWf.Post;
 
         //exempt sale
@@ -900,6 +912,12 @@ begin
         If (not tblWf.Active) or (tblWf.RecordCount = 0) then
         begin
             messageDlg('No selected record for discount.',mtError, [mbOk],0);
+            exit;
+        end;
+
+        if (tblWfSellingPrice.Value<= 0) then
+        begin
+            messageDlg('Selected Item has zero (0) amount.',mtError, [mbOk],0);
             exit;
         end;
 
@@ -1682,6 +1700,9 @@ end;
 procedure TfrmPOS.btnSoldToClick(Sender: TObject);
 begin
         edtCustomerType.ReadOnly:= false;
+        edtAdd1.ReadOnly:= false;
+        edtAdd2.ReadOnly:= false;
+
         edtCustomerType.SetFocus;
 
         {
@@ -1880,6 +1901,8 @@ begin
     chkWholeSale.Checked:=false;
     chkMainItemFlag.Checked:= false;
     edtCustomerType.ReadOnly:=true;
+    edtAdd1.ReadOnly:= true;
+    edtAdd2.ReadOnly:= true;
 end;
 
 procedure TfrmPOS.edtBarcodeKeyUp(Sender: TObject; var Key: Word;
